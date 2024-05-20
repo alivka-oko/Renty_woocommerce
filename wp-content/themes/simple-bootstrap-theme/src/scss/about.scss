@@ -1,0 +1,41 @@
+.changing-sides {
+    .content-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 130px;
+
+        &.left {
+            flex-direction: row-reverse;
+            max-width: 1130px
+        }
+
+        &.right {
+            flex-direction: row;
+        }
+
+        .content-block__img {
+            width: 500px;
+            height: 500px;
+            border-radius: 4px;
+            object-fit: cover;
+
+            border-radius: 4px;
+        }
+
+        .text-content {}
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    }
+
+    .text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+
+        color: #2B2D42;
+    }
+
+}

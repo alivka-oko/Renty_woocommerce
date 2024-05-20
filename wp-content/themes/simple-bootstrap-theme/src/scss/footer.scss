@@ -1,0 +1,85 @@
+.footer {
+    background: $bg-blue;
+    padding: 32px 0 68px 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-logo-tel {
+        gap: 19px;
+
+        .big-tel {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 167%;
+
+            color: $main;
+            border-bottom: 1px solid $main;
+        }
+
+        .btn-up {
+            font-weight: 500;
+
+            &::before {
+                content: '';
+                background-image: url(./src/icons/btn-up.svg);
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+
+    .footer-menu {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+
+    .footer-info {
+        align-items: end;
+        gap: 10px;
+        justify-content: space-between;
+
+        .working-hours {
+            color: #0E0E0E;
+        }
+
+        .address {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            text-align: right;
+
+            color: #0E0E0E;
+        }
+
+        .socials {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            justify-content: space-between;
+
+            a {
+                padding: 5px;
+            }
+        }
+    }
+
+    .policy {
+        display: flex;
+        gap: 20px;
+    }
+}

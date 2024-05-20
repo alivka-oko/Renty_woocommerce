@@ -1,0 +1,21 @@
+.section.contacts {
+    padding-top: 50px;
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+
+    .contacts-info,
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: start;
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+}

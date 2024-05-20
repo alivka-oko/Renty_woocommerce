@@ -1,0 +1,66 @@
+.banner-ad {
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    &__text-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .left-side {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+}
+
+.call-form {
+    padding: 100px 0;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+    .wpcf7-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 48px;
+        gap: 24px;
+        max-width: 605px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        max-width: none;
+        text-transform: uppercase;
+        padding: 24px 0px;
+    }
+
+    span.wpcf7-form-control-wrap {
+        width: 100%;
+    }
+
+    input.wpcf7-form-control {
+        background: transparent;
+        border: none;
+        border-bottom: 2px #E1E1E1 solid;
+        width: 100%;
+        max-width: none;
+        padding: 15px 0;
+
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 200%;
+        color: $gray-one;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
