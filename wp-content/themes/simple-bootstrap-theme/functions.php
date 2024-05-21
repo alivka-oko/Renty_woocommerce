@@ -26,6 +26,10 @@ function load_theme_scripts()
     wp_deregister_script('jquery');
     wp_register_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', array(), null, false);
     wp_enqueue_script('jquery');
+
+    // Подключаем jQuery UI
+    wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'), '1.12.1', true);
+    wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', false, '1.12.1', 'all');
 }
 
 add_action("wp_enqueue_scripts", "load_theme_scripts");
@@ -360,3 +364,52 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
         }
         add_action('wp_ajax_remove_from_wishlist', 'custom_remove_from_wishlist');
         add_action('wp_ajax_nopriv_remove_from_wishlist', 'custom_remove_from_wishlist');
+
+
+        function filter_products()
+        {
+            $args = array(
+                'post_type' => 'product',
+                'posts_per_page' => -1,
+                'orderby' => 'date',
+                'order' => 'DESC',
+            );
+
+            if (isset($_POST['sort_by'])) {
+                if ($_POST['sort_by'] == 'price-asc') {
+                    $args['orderby'] = 'meta_value_num';
+                    $args['meta_key'] = '_price';
+                    $args['order'] = 'ASC';
+                } elseif ($_POST['sort_by'] == 'price-desc') {
+                    $args['orderby'] = 'meta_value_num';
+                    $args['meta_key'] = '_price';
+                    $args['order'] = 'DESC';
+                }
+            }
+
+            if (isset($_POST['min_price']) && isset($_POST['max_price'])) {
+                $args['meta_query'] = array(
+                    array(
+                        'key' => '_price',
+                        'value' => array($_POST['min_price'], $_POST['max_price']),
+                        'compare' => 'BETWEEN',
+                        'type' => 'NUMERIC'
+                    )
+                );
+            }
+
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post();
+                    wc_get_template_part('content', 'product');
+                endwhile;
+            else :
+                echo '<p>Товары не найдены</p>';
+            endif;
+
+            wp_reset_postdata();
+            die();
+        }
+        add_action('wp_ajax_filter_products', 'filter_products');
+        add_action('wp_ajax_nopriv_filter_products', 'filter_products');

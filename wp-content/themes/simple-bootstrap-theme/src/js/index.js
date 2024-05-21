@@ -23,7 +23,7 @@ const swiperArticles = new Swiper('.swiper.articles', {
     spaceBetween: 25,
     slidesPerView: 4,
     autoplay: {
-        delay: 20000,
+        delay: 100000,
     },
     navigation: {
         nextEl: ".articles .control-element.next",
@@ -39,7 +39,7 @@ const swiperSimilar = new Swiper('.swiper.similar', {
     spaceBetween: 25,
     slidesPerView: 4,
     autoplay: {
-        delay: 20000,
+        delay: 100000,
     },
     navigation: {
         nextEl: ".similar .control-element.next",
@@ -76,7 +76,7 @@ swiperContainers.forEach((swiperContainer, index) => {
             },
         },
         autoplay: {
-            delay: 20000,
+            delay: 100000,
         },
     });
 });
@@ -96,4 +96,5 @@ const swiperSingleProduct = new Swiper('.swiper_main', {
         swiper: swiperThumbnail,
     },
 })
+
 

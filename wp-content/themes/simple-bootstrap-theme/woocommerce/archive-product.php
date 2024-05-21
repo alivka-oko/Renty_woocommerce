@@ -10,15 +10,135 @@ get_header();
 					Коммерческие помещения
 				</h2>
 			</div>
+			<?php
+			// Получение минимальной цены
+			$min_price_query = new WP_Query(array(
+				'post_type'      => 'product',
+				'posts_per_page' => 1,
+				'orderby'        => 'meta_value_num',
+				'order'          => 'ASC',
+				'meta_key'       => '_price',
+				'meta_query'     => array(
+					array(
+						'key'     => '_stock_status',
+						'value'   => 'instock',
+						'compare' => '='
+					)
+				)
+			));
+			$min_price = $min_price_query->have_posts() ? get_post_meta($min_price_query->posts[0]->ID, '_price', true) : 0;
+
+			// Получение максимальной цены
+			$max_price_query = new WP_Query(array(
+				'post_type'      => 'product',
+				'posts_per_page' => 1,
+				'orderby'        => 'meta_value_num',
+				'order'          => 'DESC',
+				'meta_key'       => '_price',
+				'meta_query'     => array(
+					array(
+						'key'     => '_stock_status',
+						'value'   => 'instock',
+						'compare' => '='
+					)
+				)
+			));
+			$max_price = $max_price_query->have_posts() ? get_post_meta($max_price_query->posts[0]->ID, '_price', true) : 0;
+
+			// Получение минимальной и максимальной площади для формы
+			global $wpdb;
+
+			$min_area_result = $wpdb->get_var("
+    SELECT MIN(CAST(meta_value AS UNSIGNED)) 
+    FROM $wpdb->postmeta 
+    WHERE meta_key = 'area'
+    AND post_id IN (
+        SELECT ID FROM $wpdb->posts WHERE post_type = 'product' AND post_status = 'publish'
+    )
+    AND meta_value != ''
+");
+
+			$max_area_result = $wpdb->get_var("
+    SELECT MAX(CAST(meta_value AS UNSIGNED)) 
+    FROM $wpdb->postmeta 
+    WHERE meta_key = 'area'
+    AND post_id IN (
+        SELECT ID FROM $wpdb->posts WHERE post_type = 'product' AND post_status = 'publish'
+    )
+    AND meta_value != ''
+");
+
+			$min_area = $min_area_result ? $min_area_result : 0;
+			$max_area = $max_area_result ? $max_area_result : 0;
+
+
+			?>
+
+			<form method="get">
+				<select name="orderby">
+					<option value="default">По умолчанию</option>
+					<option value="price_asc" <?php echo (isset($_GET['orderby']) && $_GET['orderby'] == 'price_asc') ? 'selected' : ''; ?>>Сначала дешевле</option>
+					<option value="price_desc" <?php echo (isset($_GET['orderby']) && $_GET['orderby'] == 'price_desc') ? 'selected' : ''; ?>>Сначала дороже</option>
+				</select>
+				Цена от: <input type="number" step="0.01" name="min_price" value="<?php echo isset($_GET['min_price']) ? $_GET['min_price'] : $min_price / 1000000; ?>">
+				до: <input type="number" step="0.01" name="max_price" value="<?php echo isset($_GET['max_price']) ? $_GET['max_price'] : $max_price / 1000000; ?>">
+				Площадь от: <input type="number" step="0.01" name="min_area" value="<?php echo isset($_GET['min_area']) ? $_GET['min_area'] : $min_area; ?>">
+				до: <input type="number" step="0.01" name="max_area" value="<?php echo isset($_GET['max_area']) ? $_GET['max_area'] : $max_area; ?>">
+				<button type="submit">Сортировать</button>
+			</form>
+
+
+
 			<div class="cards">
 				<?php
 				$args = array(
 					'post_type'      => 'product',
 					'posts_per_page' => -1, // Получить все товары
-					'orderby'        => 'date',
-					'order'          => 'DESC',
+					'orderby'        => 'meta_value_num',
+					'order'          => 'ASC',
+					'meta_key'       => 'area',
+					'meta_query'     => array(
+						'relation' => 'AND',
+						array(
+							'key'     => '_stock_status',
+							'value'   => 'instock',
+							'compare' => '='
+						),
+						array(
+							'key'     => 'area',
+							'compare' => 'EXISTS', // Проверяем, что мета-поле существует
+						)
+					)
 				);
+
+				// Добавляем фильтр по цене, если задан
+				if (isset($_GET['min_price']) || isset($_GET['max_price'])) {
+					$min_price = isset($_GET['min_price']) ? floatval($_GET['min_price']) * 1000000 : 0;
+					$max_price = isset($_GET['max_price']) ? floatval($_GET['max_price']) * 1000000 : PHP_INT_MAX;
+
+					$args['meta_query'][] = array(
+						'key'     => '_price',
+						'value'   => array($min_price, $max_price),
+						'compare' => 'BETWEEN',
+						'type'    => 'NUMERIC',
+					);
+				}
+
+				// Добавляем фильтр по площади, если задан
+				if (isset($_GET['min_area']) || isset($_GET['max_area'])) {
+					$min_area_filter = isset($_GET['min_area']) ? floatval($_GET['min_area']) : $min_area;
+					$max_area_filter = isset($_GET['max_area']) ? floatval($_GET['max_area']) : $max_area;
+
+					$args['meta_query'][] = array(
+						'key'     => 'area',
+						'value'   => array($min_area_filter, $max_area_filter),
+						'compare' => 'BETWEEN',
+						'type'    => 'NUMERIC',
+					);
+				}
+
 				$query = new WP_Query($args);
+
 				if ($query->have_posts()) :
 					$i = 1;
 					while ($query->have_posts()) : $query->the_post();
