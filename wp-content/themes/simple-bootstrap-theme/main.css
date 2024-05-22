@@ -197,8 +197,7 @@
     z-index: 1000; }
     .header .menu .sub-menu .menu-item {
       padding: 10px;
-      background-color: #fff;
-      border-radius: 5px; }
+      background-color: #fff; }
       .header .menu .sub-menu .menu-item:hover {
         background-color: #FBFBFD; }
   .header .menu .menu-item-has-children:hover .sub-menu {

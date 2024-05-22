@@ -21,7 +21,7 @@
 						the_post();
 						$attachment_ids = $product->get_gallery_image_ids();
 						$address = CFS()->get('address');
-						$area = CFS()->get('area');
+						$area = CFS()->get('area-value');
 						$floor = CFS()->get('floor');
 						$price = $product->get_price();
 						$price_html = $product->get_price_html();
@@ -45,6 +45,13 @@
 													</a>
 												</div>
 											<?php endforeach ?>
+											<?php if ($post_thumbnail_url) : ?>
+												<div class="swiper-slide">
+													<a href="<?= esc_url(wp_get_attachment_url($attachment_id)) ?>" data-lightbox="gallery">
+														<img src="<?= esc_url($post_thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+													</a>
+												</div>
+											<?php endif; ?>
 										</div>
 										<div class="swiper-product-prev"></div>
 										<div class="swiper-product-next"></div>

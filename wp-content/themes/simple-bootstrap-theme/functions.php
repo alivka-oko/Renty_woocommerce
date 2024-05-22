@@ -413,3 +413,52 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
         }
         add_action('wp_ajax_filter_products', 'filter_products');
         add_action('wp_ajax_nopriv_filter_products', 'filter_products');
+
+
+        function register_shop_sidebar()
+        {
+            register_sidebar(array(
+                'name' => __('Shop Sidebar', 'simple-bootstrap-theme'),
+                'id' => 'shop-sidebar',
+                'description' => __('Widgets in this area will be shown on the shop page.', 'simple-bootstrap-theme'),
+                'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                'after_widget' => '</div>',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>',
+            ));
+        }
+        add_action('widgets_init', 'register_shop_sidebar');
+
+
+        function husky_product_count_shortcode()
+        {
+            return 'hi';
+        }
+        add_shortcode('husky_product_count', 'husky_product_count_shortcode');
+        
+        
+
+        // function get_min_max_meta_values($meta_key) {
+        //     global $wpdb;
+        //     $min_max_values = $wpdb->get_row($wpdb->prepare("
+        //         SELECT MIN(CAST(meta_value AS UNSIGNED)) as min_value, MAX(CAST(meta_value AS UNSIGNED)) as max_value
+        //         FROM {$wpdb->postmeta}
+        //         WHERE meta_key = %s
+        //     ", $meta_key));
+        
+        //     return $min_max_values;
+        // }
+        
+        // add_filter('wp_husky_filter_settings', function($settings) {
+        //     $area_values = get_min_max_meta_values('area-value');
+        //     $min_area = $area_values->min_value;
+        //     $max_area = $area_values->max_value;
+        
+        //     // Предположим, что у вас есть настройка фильтра с индексом 'area-value_range'
+        //     if(isset($settings['area-value_range'])) {
+        //         $settings['area-value_range']['min'] = $min_area;
+        //         $settings['area-value_range']['max'] = $max_area;
+        //     }
+        
+        //     return $settings;
+        // });
