@@ -427,7 +427,20 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
                 'after_title' => '</h3>',
             ));
         }
+        function register_home_sidebar()
+        {
+            register_sidebar(array(
+                'name' => __('Home Sidebar', 'simple-bootstrap-theme'),
+                'id' => 'home-sidebar',
+                'description' => __('Widgets in this area will be shown on the home page.', 'simple-bootstrap-theme'),
+                'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                'after_widget' => '</div>',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>',
+            ));
+        }
         add_action('widgets_init', 'register_shop_sidebar');
+        add_action('widgets_init', 'register_home_sidebar');
 
 
         function husky_product_count_shortcode()
@@ -435,30 +448,33 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
             return 'hi';
         }
         add_shortcode('husky_product_count', 'husky_product_count_shortcode');
-        
-        
 
-        // function get_min_max_meta_values($meta_key) {
-        //     global $wpdb;
-        //     $min_max_values = $wpdb->get_row($wpdb->prepare("
-        //         SELECT MIN(CAST(meta_value AS UNSIGNED)) as min_value, MAX(CAST(meta_value AS UNSIGNED)) as max_value
-        //         FROM {$wpdb->postmeta}
-        //         WHERE meta_key = %s
-        //     ", $meta_key));
+
+        function display_shown_products_count()
+        {
+            global $wp_query;
+            $count = $wp_query->post_count;
+            echo $count;
+        }
+
+        function get_min_max_values() {
+            global $wpdb;
         
-        //     return $min_max_values;
-        // }
+            // Получение минимальной и максимальной цены
+            $price_min = $wpdb->get_var("SELECT MIN(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = '_price'");
+            $price_max = $wpdb->get_var("SELECT MAX(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = '_price'");
         
-        // add_filter('wp_husky_filter_settings', function($settings) {
-        //     $area_values = get_min_max_meta_values('area-value');
-        //     $min_area = $area_values->min_value;
-        //     $max_area = $area_values->max_value;
+            // Получение минимальной и максимальной площади
+            $area_min = $wpdb->get_var("SELECT MIN(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = 'area-value'");
+            $area_max = $wpdb->get_var("SELECT MAX(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = 'area-value'");
         
-        //     // Предположим, что у вас есть настройка фильтра с индексом 'area-value_range'
-        //     if(isset($settings['area-value_range'])) {
-        //         $settings['area-value_range']['min'] = $min_area;
-        //         $settings['area-value_range']['max'] = $max_area;
-        //     }
+            // Локализация скрипта для передачи данных в JavaScript
+            wp_localize_script('webpack', 'productData', array(
+                'priceMin' => $price_min,
+                'priceMax' => $price_max,
+                'areaMin' => $area_min,
+                'areaMax' => $area_max,
+            ));
+        }
+        add_action('wp_enqueue_scripts', 'get_min_max_values');
         
-        //     return $settings;
-        // });

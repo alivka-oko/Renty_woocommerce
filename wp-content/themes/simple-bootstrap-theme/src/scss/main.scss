@@ -10,6 +10,7 @@
 @import 'wysiwyg.scss';
 @import 'about.scss';
 @import 'contacts.scss';
+@import 'shop.scss';
 
 .container {
     margin: 0 auto;
@@ -191,3 +192,11 @@ input[type="submit"] {
     display: none !important;
 }
 
+.woocommerce-result-count {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    /* dark */
+    color: #2B2D42;
+}

@@ -76,7 +76,7 @@ swiperContainers.forEach((swiperContainer, index) => {
             },
         },
         autoplay: {
-            delay: 100000,
+            delay: 1000000,
         },
     });
 });
@@ -98,3 +98,64 @@ const swiperSingleProduct = new Swiper('.swiper_main', {
 })
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    var priceMin_def = productData.priceMin;
+    var priceMax_def = productData.priceMax;
+    var areaMin_def = productData.areaMin;
+    var areaMax_def = productData.areaMax;
+
+    console.log(priceMin_def);
+    console.log(priceMax_def);
+    console.log(areaMin_def);
+    console.log(areaMax_def);
+
+    document.getElementById('search-form').addEventListener('submit', generateFilterURL);
+
+    function generateFilterURL(event) {
+        event.preventDefault();
+
+        var priceMin = document.getElementById('price-min').value;
+        var priceMax = document.getElementById('price-max').value;
+        var areaMin = document.getElementById('area-min').value;
+        var areaMax = document.getElementById('area-max').value;
+
+        var baseUrl = "/shop";
+        var url = baseUrl;
+
+        var filters = [];
+
+        // Обработка цены
+        if (priceMin || priceMax) {
+            if (priceMin && !priceMax) {
+                filters.push('price-' + priceMin + '-to-' + priceMax_def);
+            } else if (!priceMin && priceMax) {
+                filters.push('price-' + priceMin_def + '-to-' + priceMax);
+            } else if (priceMin && priceMax) {
+                filters.push('price-' + priceMin + '-to-' + priceMax);
+            }
+        }
+
+        // Обработка площади
+        if (areaMin || areaMax) {
+            if (areaMin && !areaMax) {
+                filters.push('area-value-' + areaMin + '-to-' + areaMax_def);
+            } else if (!areaMin && areaMax) {
+                filters.push('area-value-' + areaMin_def + '-to-' + areaMax);
+            } else if (areaMin && areaMax) {
+                filters.push('area-value-' + areaMin + '-to-' + areaMax);
+            }
+        }
+
+        if (filters.length > 0) {
+            url += '/swoof/' + filters.join('/');
+        }
+
+        // Проверяем наличие хотя бы одного фильтра перед перенаправлением
+        if (filters.length > 0) {
+            window.location.href = url;
+        } else {
+            // Если нет фильтров, перенаправляем на базовый URL
+            window.location.href = baseUrl;
+        }
+    }
+});

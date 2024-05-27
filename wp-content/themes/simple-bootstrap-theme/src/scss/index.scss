@@ -29,7 +29,7 @@
         form {
             background-color: $white;
             display: flex;
-            padding: 20px 27px;
+            padding: 20px 29px 20px 27px;
             border-radius: 6px;
             justify-content: space-between;
             max-height: 94px;
@@ -42,7 +42,6 @@
                 letter-spacing: 0.02em;
 
                 color: #3A374F;
-                margin-bottom: 10px;
             }
 
             input:not([type="submit"]) {
@@ -50,25 +49,46 @@
                 font-weight: 600;
                 font-size: 12px;
                 line-height: 20px;
-                text-align: center;
+                text-align: start;
+                padding: 0px 10px;
 
                 color: $gray-one;
                 border: 1px solid $main_third;
                 background: #F6F9FB;
-                margin-top: 10px;
-                margin-right: $gap;
                 height: 34px;
 
                 max-width: 180px;
                 width: 180px;
+
+                border-radius: 4px;
+
+                &:focus {
+                    outline: none;
+                }
+                &::placeholder{
+                    text-align: center;
+                }
             }
 
-            input[type="submit"] {
-                width: 280px;
+            button[type="submit"] {
+                max-width: 280px !important;
+                height: 54px;
             }
         }
     }
 }
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .form-labels {
+        display: flex;
+        gap: 28px;
+    }
+}
+
 
 
 

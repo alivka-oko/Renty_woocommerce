@@ -10,29 +10,38 @@ get_header();
                     Коммерческие помещения<br>
                     в Петрозаводске
                 </h1>
-                <form action="get">
+                <!-- Форма поиска -->
+                <form id="search-form">
+
                     <div class="form-item">
-                        <label for="area">Площадь м2:</label><br>
-                        <input type="text" id="areaFrom" name="areaFrom" value="" placeholder="от">
-                        <input type="text" id="areaTo" name="areaTo" value="" placeholder="до"><br><br>
+                        <label for="area-min">Площадь м2</label>
+                        <div class="form-labels">
+                            <input type="number" id="area-min" name="area-min" min="0" placeholder="от">
+                            <input type="number" id="area-max" name="area-max" min="0" placeholder="до">
+                        </div>
                     </div>
 
                     <div class="form-item">
-                        <label for="price">Цена:</label><br>
-                        <input type="text" id="priceFrom" name="priceFrom" value="" placeholder="от">
-                        <input type="text" id="priceTo" name="priceTo" value="" placeholder="до"><br><br>
+                        <label for="price-min">Цена</label>
+                        <div class="form-labels">
+                            <input type="number" id="price-min" name="price-min" min="0" placeholder="от">
+                            <input type="number" id="price-max" name="price-max" min="0" placeholder="до">
+                        </div>
                     </div>
-                    <input type="submit" class="btn" value="Поиск">
+
+                    <button type="submit" class="btn">Поиск</button>
                 </form>
             </div>
         </div>
     </section>
+
+
     <section class="section offers">
         <div class="container">
             <div class="content">
                 <div class="headline">
                     <h2 class="heading-m text-up">
-                        Лучшие предложения
+                        Лучшие предложения 
                     </h2>
                     <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="link-accent">Все
                         предложения</a>
@@ -53,38 +62,34 @@ get_header();
                         ),
                     );
                     $query = new WP_Query($args);
-                    if ($query->have_posts()):
+                    if ($query->have_posts()) :
                         $i = 1;
-                        while ($query->have_posts()):
+                        while ($query->have_posts()) :
                             $query->the_post();
                             $product = wc_get_product(get_the_ID());
 
-                            if ($product && $product->is_visible()):
+                            if ($product && $product->is_visible()) :
                                 $address = CFS()->get('address');
-                                $area = CFS()->get('area');
+                                $area = CFS()->get('area-value');
                                 $floor = CFS()->get('floor');
                                 $price = $product->get_price();
                                 $price_html = $product->get_price_html();
 
                                 $attachment_ids = $product->get_gallery_image_ids();
                                 $post_thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), array(500, 500));
-                                ?>
+                    ?>
                                 <article class="card product">
                                     <div class="swiper-container products">
                                         <div class="swiper swiper-<?= $i ?>">
                                             <div class="swiper-wrapper">
-                                                <?php if ($post_thumbnail_url): ?>
+                                                <?php if ($post_thumbnail_url) : ?>
                                                     <div class="swiper-slide">
-                                                        <div class="swiper-img"><a href="<?php echo the_permalink() ?>"><img
-                                                                    src="<?= esc_url($post_thumbnail_url); ?>"
-                                                                    alt="<?php echo esc_attr(get_the_title()); ?>"></a></div>
+                                                        <div class="swiper-img"><a href="<?php echo the_permalink() ?>"><img src="<?= esc_url($post_thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"></a></div>
                                                     </div>
                                                 <?php endif; ?>
-                                                <?php foreach ($attachment_ids as $attachment_id): ?>
+                                                <?php foreach ($attachment_ids as $attachment_id) : ?>
                                                     <div class="swiper-slide">
-                                                        <div class="swiper-img"><a href="<?php echo the_permalink() ?>"><img
-                                                                    src="<?= esc_url(wp_get_attachment_url($attachment_id)) ?>"
-                                                                    alt=""></a></div>
+                                                        <div class="swiper-img"><a href="<?php echo the_permalink() ?>"><img src="<?= esc_url(wp_get_attachment_url($attachment_id)) ?>" alt=""></a></div>
                                                     </div>
                                                 <?php endforeach ?>
                                             </div>
@@ -96,24 +101,23 @@ get_header();
                                         <h3 class="card-title text-title"><?php the_title(); ?></h3>
                                         <div class="card-address text-value"><?php echo $address ?></div>
                                         <div class="card-description">
-                                            <?php if ($price != 0): ?>
+                                            <?php if ($price != 0) : ?>
                                                 <div class="attribute">
                                                     <span class="text-attribute">Стоимость в месяц</span>
                                                     <span class="text-value"><?php echo number_format((float) $price, 0, '.', ' '); ?>
                                                         ₽</span>
                                                 </div>
                                             <?php endif ?>
-                                            <?php if ($area and $price):
+                                            <?php if ($area and $price) :
                                                 $price_month_area = $price / $area; ?>
                                                 <div class="attribute">
                                                     <span class="text-attribute">Стоимость за м2/мес.</span>
-                                                    <span
-                                                        class="text-value"><?php echo number_format((float) $price_month_area, 2, '.', ' '); ?>
+                                                    <span class="text-value"><?php echo number_format((float) $price_month_area, 2, '.', ' '); ?>
                                                         ₽</span>
                                                 </div>
                                             <?php endif ?>
 
-                                            <?php if ($area): ?>
+                                            <?php if ($area) : ?>
                                                 <div class="attribute">
                                                     <span class="text-attribute">Площадь</span>
                                                     <span class="text-value"><?php echo number_format((float) $area, 0, '.', ' '); ?>
@@ -121,7 +125,7 @@ get_header();
                                                 </div>
                                             <?php endif ?>
 
-                                            <?php if ($floor): ?>
+                                            <?php if ($floor) : ?>
                                                 <div class="attribute">
                                                     <span class="text-attribute">Этаж</span>
                                                     <span class="text-value"><?php echo $floor ?> этаж</span>
@@ -136,14 +140,14 @@ get_header();
                                                 <button>
                                                     <img src="<?= $phoneico ?>" alt="call-ico">
                                                 </button>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </div>
                                     </div>
                                 </article>
 
-                                <?php
+                    <?php
                             endif;
                             $i++;
                         endwhile;
@@ -159,8 +163,7 @@ get_header();
     <section class="section banner-ad">
         <div class="container">
             <div class="content">
-                <a class="advertisement" href="#"
-                    style="background:url('../wp-content/uploads/2024/05/advertisement.png')"></a>
+                <a class="advertisement" href="#" style="background:url('../wp-content/uploads/2024/05/advertisement.png')"></a>
                 <div class="banner-ad__text-block">
                     <div class="left-side">
                         <h3 class="heading-m">Бесплатный подбор офиса и экскурсии по объектам!</h3>
@@ -197,8 +200,7 @@ get_header();
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg"
-                                        alt="">
+                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -207,8 +209,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg"
-                                        alt="">
+                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -217,8 +218,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg"
-                                        alt="">
+                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -227,8 +227,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg"
-                                        alt="">
+                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -237,8 +236,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg"
-                                        alt="">
+                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -251,7 +249,7 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="section videos">
+    <!-- <section class="section videos">
         <div class="container">
             <div class="content">
                 <div class="headline">
@@ -266,7 +264,7 @@ get_header();
                     </div>
                     <a href="/" class="link-accent">еще видео</a>
                 </div>
-                <!-- <div class="cards">
+                <div class="cards">
                     <div class="swiper videos">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -299,10 +297,10 @@ get_header();
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <?php get_template_part('contact-form') ?>
 </main>
 <?php get_footer() ?>

@@ -1,0 +1,200 @@
+.irs--sharp .irs-bar {
+    top: 30px;
+    height: 4px !important;
+    background-color: #AEDEF9 !important;
+}
+
+.irs--sharp .irs-line {
+    height: 4px !important;
+    background-color: #b0cfe275 !important;
+}
+
+.irs--sharp .irs-grid {
+    display: none !important;
+}
+
+.irs--sharp .irs-handle {
+    top: 25px;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50px !important;
+    background-color: #3A86B7 !important;
+}
+
+.irs--sharp .irs-handle>i:first-child,
+.irs--sharp .irs-from:before,
+.irs--sharp .irs-to:before,
+.irs--sharp .irs-single:before {
+    display: none !important;
+}
+
+.irs--sharp .irs-min,
+.irs--sharp .irs-max,
+.irs--sharp .irs-from,
+.irs--sharp .irs-to,
+.irs--sharp .irs-single {
+    background-color: transparent !important;
+    color: #2B2D42 !important;
+}
+
+.span.irs-to {
+    left: 80% !important;
+}
+
+span.irs.irs--sharp.js-irs-0.irs-with-grid {
+    margin-right: 40px;
+}
+
+.woof_container_inner,
+.woocommerce-ordering {
+    h4 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 140%;
+
+        color: #2B2D42;
+    }
+}
+
+.woof_submit_search_form_container {
+    justify-content: start !important;
+    flex-direction: row-reverse;
+    gap: 30px;
+}
+
+.button {
+    &.woof_submit_search_form {
+        background: #3A86B7 !important;
+        border-radius: 4px !important;
+
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 14px !important;
+        line-height: 26px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        text-align: center !important;
+        letter-spacing: 0.2px !important;
+
+        /* /white */
+        color: #FFFFFF !important;
+
+        padding: 12px 40px !important;
+    }
+
+    &.woof_reset_search_form {
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 16px !important;
+        line-height: 26px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        color: #2B2D42 !important;
+
+        /* Auto layout */
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+
+        background: transparent !important;
+        gap: 17px;
+
+        &::after {
+            content: '';
+            display: block;
+            background-image: url(./src/icons/ic_close.svg);
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+}
+
+.woocommerce .woocommerce-ordering,
+.woocommerce-page .woocommerce-ordering {
+    float: none !important;
+}
+
+.catalog-sidebar {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+
+    .right-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 250px;
+        flex-grow: 1;
+
+        &::after {
+            content: '';
+            display: block;
+            background-image: url(./src/icons/ic_arrow_go.svg);
+            width: 15px;
+            height: 90px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    .left-side {
+        flex-grow: 1;
+    }
+}
+
+select.orderby {
+    background: transparent;
+    border: none;
+    padding: 7px 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #2B2D42;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.woof_redraw_zone {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.woof_price_filter,
+.woof_meta_slider_container {
+    flex-grow: 1;
+}
+
+.woof_submit_search_form_container {
+    width: 100%;
+}
+
+span.irs-to {
+    // transform: translateX(-30%) !important;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+span.irs-from {
+    transform: translateX(30%) !important;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.woocommerce-ordering {
+    width: 100%;
+}
+
+.catalog-sidebar {
+    padding-bottom: 70px;
+}

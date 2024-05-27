@@ -112,5 +112,11 @@ get_header();
         </div>
     </div>
 </section>
+<script>
+    let ordering = document.querySelector('.woocommerce-ordering');
+    let buttons_form_container = document.querySelector('.woof_submit_search_form_container');
+    buttons_form_container.insertAdjacentElement('beforebegin', ordering)
+</script>
 
 <?php get_footer(); ?>
+

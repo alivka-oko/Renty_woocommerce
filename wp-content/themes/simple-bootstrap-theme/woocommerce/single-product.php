@@ -4,17 +4,13 @@
 	<section class="section product-page">
 		<div class="container">
 			<div class="content">
-				<nav class="breadcrumbs"><!-- Breadcrumb NavXT 7.3.0 -->
-					<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Кама-строй." href="https://xn----7sba1bbnqpik.xn--p1ai" class="breadcrumb-item"><span property="name">Главная</span></a>
-						<meta property="position" content="1">
-					</span> / <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to the Строительство домов Рубрика archives." href="https://xn----7sba1bbnqpik.xn--p1ai/building-houses/" class="breadcrumb-item"><span property="name">Строительство домов</span></a>
-						<meta property="position" content="2">
-					</span> / <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to the Деревянные дома Рубрика archives." href="https://xn----7sba1bbnqpik.xn--p1ai/building-houses/building_wooden/" class="breadcrumb-item"><span property="name">Деревянные дома</span></a>
-						<meta property="position" content="3">
-					</span> / <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Дом 1." href="https://xn----7sba1bbnqpik.xn--p1ai/building-houses/building_wooden/%d0%b4%d0%be%d0%bc-1/" class="breadcrumb-item" aria-current="page"><span property="name">Дом 1</span></a>
-						<meta property="position" content="4">
-					</span>
-				</nav>
+				<?php
+				if (function_exists('bcn_display')) {
+					echo '<nav class="breadcrumbs">';
+					bcn_display();
+					echo '</nav>';
+				}
+				?>
 				<?php
 				if (have_posts()) {
 					while (have_posts()) {

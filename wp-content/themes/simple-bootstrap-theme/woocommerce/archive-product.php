@@ -10,19 +10,26 @@ get_header('shop');
 				<h2 class="heading-m text-up">
 					Коммерческие помещения
 				</h2>
-				<div class="woocommerce-result-count">
-					<?php woocommerce_result_count(); ?>
-				</div>
-				<div class="woocommerce-ordering">
-					<?php woocommerce_catalog_ordering(); ?>
-				</div>
 			</div>
 
-			<aside class="catalog-sidebar">
-				<?php if (is_active_sidebar('shop-sidebar')) : ?>
-					<?php dynamic_sidebar('shop-sidebar'); ?>
-				<?php endif; ?>
-			</aside>
+			<div class="catalog-sidebar">
+				<div class="left-side">
+
+					<?php if (is_active_sidebar('shop-sidebar')) : ?>
+						<?php dynamic_sidebar('shop-sidebar'); ?>
+					<?php endif; ?>
+
+					<div class="woocommerce-ordering">
+						<h4> Сортировка </h4>
+						<?php woocommerce_catalog_ordering(); ?>
+					</div>
+				</div>
+				<div class="right-side">
+					<div class="woocommerce-result-count">
+						Найдено помещений: <?php display_shown_products_count(); ?>
+					</div>
+				</div>
+			</div>
 			<div class="cards">
 				<?php if (have_posts()) : ?>
 					<?php
@@ -65,7 +72,7 @@ get_header('shop');
 										<?php if ($price) : ?>
 											<div class="attribute">
 												<span class="text-attribute">Стоимость в месяц</span>
-												<span class="text-value"><?php echo esc_html(number_format((float)$price, 0, '.', ' ')); ?> ₽</span>
+												<span class="text-value"><?php echo esc_html(number_format((float)$price, 2, '.', ' ')); ?> ₽</span>
 											</div>
 										<?php endif; ?>
 										<?php if ($area && $price) :
@@ -78,7 +85,7 @@ get_header('shop');
 										<?php if ($area) : ?>
 											<div class="attribute">
 												<span class="text-attribute">Площадь</span>
-												<span class="text-value"><?php echo esc_html(number_format((float)$area, 0, '.', ' ')); ?> м2</span>
+												<span class="text-value"><?php echo esc_html(number_format((float)$area, 1, '.', ' ')); ?> м2</span>
 											</div>
 										<?php endif; ?>
 										<?php if ($floor) : ?>
@@ -111,7 +118,12 @@ get_header('shop');
 		</div>
 	</div>
 </section>
-
+<?php get_template_part('contact-form') ?>
+<script>
+	let ordering = document.querySelector('.woocommerce-ordering');
+	let buttons_form_container = document.querySelector('.woof_submit_search_form_container');
+	buttons_form_container.insertAdjacentElement('beforebegin', ordering)
+</script>
 
 <?php
 get_footer('shop');
