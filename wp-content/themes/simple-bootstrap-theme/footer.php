@@ -41,9 +41,9 @@
                 </a>
             </div>
             <div class="policy form-text">
-                <a href="#">Пользовательское соглашение</a>
-                |
-                <a href="#">Пользовательское соглашение</a>
+                <a href="#" class="link">Пользовательское соглашение</a>
+                <span class="separator">|</span>
+                <a href="#" class="link">Политика конфиденциальности</a>
             </div>
         </div>
     </div>

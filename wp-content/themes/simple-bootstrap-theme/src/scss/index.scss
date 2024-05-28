@@ -5,6 +5,8 @@
     position: relative;
     display: flex;
     align-items: end;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     &::after {
         content: '';
@@ -24,7 +26,7 @@
     .content {
         display: flex;
         flex-direction: column;
-        gap: 80px;
+        gap: 5rem;
 
         form {
             background-color: $white;
@@ -33,11 +35,12 @@
             border-radius: 6px;
             justify-content: space-between;
             max-height: 94px;
+            gap: 0.625rem;
 
             label {
                 font-style: normal;
                 font-weight: 700;
-                font-size: 14px;
+                font-size: 0.875rem;
                 line-height: 100%;
                 letter-spacing: 0.02em;
 
@@ -47,25 +50,26 @@
             input:not([type="submit"]) {
                 font-style: normal;
                 font-weight: 600;
-                font-size: 12px;
+                font-size: 0.75rem;
                 line-height: 20px;
                 text-align: start;
-                padding: 0px 10px;
+                padding: 0px 0.625rem;
 
                 color: $gray-one;
                 border: 1px solid $main_third;
                 background: #F6F9FB;
                 height: 34px;
 
-                max-width: 180px;
-                width: 180px;
+                max-width: 11.25rem;
+                width: 11.25rem;
 
                 border-radius: 4px;
 
                 &:focus {
                     outline: none;
                 }
-                &::placeholder{
+
+                &::placeholder {
                     text-align: center;
                 }
             }
@@ -85,7 +89,7 @@
 
     .form-labels {
         display: flex;
-        gap: 28px;
+        gap: 1.625rem;
     }
 }
 
@@ -97,6 +101,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 50px;
+    flex-wrap: wrap;
 
     .title-control {
         display: flex;

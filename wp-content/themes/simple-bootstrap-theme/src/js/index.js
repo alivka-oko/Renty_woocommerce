@@ -21,13 +21,24 @@ const swiperArticles = new Swiper('.swiper.articles', {
     direction: 'horizontal',
     loop: true,
     spaceBetween: 25,
-    slidesPerView: 4,
+    slidesPerView: 1,
     autoplay: {
         delay: 100000,
     },
     navigation: {
         nextEl: ".articles .control-element.next",
         prevEl: ".articles .control-element.prev",
+    },
+    breakpoints: {
+        600: {
+            slidesPerView: 2
+        },
+        768: {
+            slidesPerView: 3
+        },
+        960: {
+            slidesPerView: 4
+        },
     },
 });
 
@@ -104,11 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var areaMin_def = productData.areaMin;
     var areaMax_def = productData.areaMax;
 
-    console.log(priceMin_def);
-    console.log(priceMax_def);
-    console.log(areaMin_def);
-    console.log(areaMax_def);
-
     document.getElementById('search-form').addEventListener('submit', generateFilterURL);
 
     function generateFilterURL(event) {
@@ -158,4 +164,15 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = baseUrl;
         }
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.getElementById('burger-menu');
+    const menuBlock = document.getElementById('menu-block');
+
+    burgerMenu.addEventListener('click', function () {
+        menuBlock.classList.toggle('active');
+        burgerMenu.classList.toggle('active');
+    });
 });

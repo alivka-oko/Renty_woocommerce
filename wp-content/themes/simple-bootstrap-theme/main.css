@@ -1,6 +1,11 @@
 /*!*****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss ***!
   \*****************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+/*!*********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss (1) ***!
+  \*********************************************************************************************************************************************/
+@charset "UTF-8";
 @font-face {
   font-family: 'Manrope';
   font-style: normal;
@@ -57,38 +62,77 @@
   font-display: swap;
   src: url("../fonts/Manrope-ExtraBold.ttf") format("ttf"); }
 
+html {
+  font-size: 16px; }
+
+.heading-l {
+  font-size: 2.75rem; }
+
+.heading-m {
+  font-size: 2rem; }
+
+.link {
+  font-size: 0.875rem; }
+
+.link-accent {
+  font-size: 1rem; }
+
+.text {
+  font-size: 1rem; }
+  .text-title {
+    font-size: 1rem; }
+  .text-sub {
+    font-size: 0.875rem; }
+  .text-sub-title {
+    font-size: 0.875rem; }
+  .text-attribute {
+    font-size: 0.75rem; }
+  .text-value {
+    font-size: 0.75rem; }
+  .text-date {
+    font-size: 0.875rem; }
+
+.form-title {
+  font-size: 1.5rem; }
+
+.form-text {
+  font-size: 1rem; }
+
 .heading-l {
   color: #fff;
   font-style: normal;
   font-weight: 700;
-  font-size: 44px;
   line-height: 127%;
   text-transform: uppercase; }
 
 .heading-m {
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
   line-height: 150%;
   letter-spacing: 0.01em; }
 
 .link {
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
   line-height: 200%;
   align-items: center;
   letter-spacing: 0.3px;
   transition: ease-in 0.2s;
   cursor: pointer; }
+  .link a {
+    transition: ease-in 0.2s; }
 
 .link:hover {
+  color: #3A86B7; }
+  .link:hover > .nav-link {
+    color: #3A86B7; }
+
+.header .menu .sub-menu .menu-item:hover .nav-link {
   color: #3A86B7; }
 
 .link-accent {
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
   line-height: 200%;
   text-decoration-line: underline;
   text-transform: uppercase;
@@ -96,7 +140,6 @@
 
 .text {
   font-weight: 600;
-  font-size: 16px;
   line-height: 150%;
   display: flex;
   align-items: center;
@@ -104,36 +147,30 @@
   .text-title {
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
     line-height: 140%;
     display: flex;
     align-items: center;
     letter-spacing: 0.002em; }
   .text-sub {
     font-weight: 500;
-    font-size: 14px;
     line-height: 200%; }
   .text-sub-title {
     font-weight: 600;
-    font-size: 14px;
     line-height: 186%; }
   .text-attribute {
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
     line-height: 133%;
     letter-spacing: 0.1px;
     color: #868994; }
   .text-value {
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
     line-height: 167%;
     display: flex;
     letter-spacing: 0.1px; }
   .text-date {
     font-weight: 500;
-    font-size: 14px;
     line-height: 28px;
     color: #808E93;
     display: flex;
@@ -142,13 +179,11 @@
 .form-title {
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
   line-height: 167%; }
 
 .form-text {
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
   line-height: 200%;
   color: #0E0E0E; }
 
@@ -165,7 +200,7 @@
 
 .header .content {
   display: flex;
-  gap: 71px;
+  gap: 4.375rem;
   justify-content: space-between;
   padding: 18px 0; }
 
@@ -211,7 +246,7 @@
 .header .action-block {
   display: flex;
   align-items: center;
-  gap: 32px; }
+  gap: 2rem; }
   .header .action-block .text-block {
     display: flex;
     flex-direction: column; }
@@ -223,13 +258,32 @@
   letter-spacing: 0.05em;
   color: #2B2D42; }
 
+/* Стили для бургер-кнопки */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer; }
+
+.burger-menu span {
+  width: 35px;
+  height: 3px;
+  background-color: #3A86B7;
+  margin: 4px 0;
+  transition: 0.4s; }
+
+/* Стили для отображения и скрытия меню */
+.menu__block {
+  display: flex; }
+
 .banner {
   height: 520px;
   background-image: url(./src/icons/image.png);
   width: 100%;
   position: relative;
   display: flex;
-  align-items: end; }
+  align-items: end;
+  background-repeat: no-repeat;
+  background-size: cover; }
   .banner::after {
     content: '';
     position: absolute;
@@ -243,34 +297,35 @@
   .banner .content {
     display: flex;
     flex-direction: column;
-    gap: 80px; }
+    gap: 5rem; }
     .banner .content form {
       background-color: #fff;
       display: flex;
       padding: 20px 29px 20px 27px;
       border-radius: 6px;
       justify-content: space-between;
-      max-height: 94px; }
+      max-height: 94px;
+      gap: 0.625rem; }
       .banner .content form label {
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 0.875rem;
         line-height: 100%;
         letter-spacing: 0.02em;
         color: #3A374F; }
       .banner .content form input:not([type="submit"]) {
         font-style: normal;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 20px;
         text-align: start;
-        padding: 0px 10px;
+        padding: 0px 0.625rem;
         color: #808E93;
         border: 1px solid #E1E6EE;
         background: #F6F9FB;
         height: 34px;
-        max-width: 180px;
-        width: 180px;
+        max-width: 11.25rem;
+        width: 11.25rem;
         border-radius: 4px; }
         .banner .content form input:not([type="submit"]):focus {
           outline: none; }
@@ -286,13 +341,14 @@
   justify-content: space-between; }
   .form-item .form-labels {
     display: flex;
-    gap: 28px; }
+    gap: 1.625rem; }
 
 .headline {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  flex-wrap: wrap; }
   .headline .title-control {
     display: flex;
     gap: 35px;
@@ -331,7 +387,8 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px; }
+  gap: 25px;
+  justify-content: center; }
   .cards .card {
     display: flex;
     flex-direction: column; }
@@ -346,7 +403,7 @@
       gap: 15px;
       width: 395px; }
     .cards .card.article {
-      width: 290px;
+      max-width: 290px;
       gap: 16px; }
     .cards .card .swiper-container .swiper {
       max-width: 100%;
@@ -433,7 +490,7 @@
     padding: 15px 0;
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 200%;
     color: #808E93; }
     .call-form input.wpcf7-form-control:focus {
@@ -452,7 +509,7 @@
     gap: 19px; }
     .footer .footer-logo-tel .big-tel {
       font-weight: 500;
-      font-size: 24px;
+      font-size: 1.5rem;
       line-height: 167%;
       color: #3A86B7;
       border-bottom: 1px solid #3A86B7; }
@@ -477,7 +534,7 @@
       color: #0E0E0E; }
     .footer .footer-info .address {
       font-weight: 500;
-      font-size: 20px;
+      font-size: 1.25rem;
       line-height: 140%;
       display: flex;
       align-items: center;
@@ -493,6 +550,8 @@
   .footer .policy {
     display: flex;
     gap: 20px; }
+    .footer .policy .link {
+      white-space: nowrap; }
 
 section.section.product-page {
   padding: 50px 0; }
@@ -1131,6 +1190,200 @@ span.irs-from {
 .catalog-sidebar {
   padding-bottom: 70px; }
 
+@media screen and (max-width: 1280px) {
+  .section.videos,
+  .banner-ad,
+  .section.catalog,
+  .section.favorites,
+  .section.offers,
+  .section.articles,
+  .banner .container {
+    padding: 70px 30px !important; }
+  .section.call-form,
+  .section.footer {
+    padding-left: 30px;
+    padding-right: 30px; }
+  .header .content {
+    padding: 18px 30px; }
+  .offers .cards .card.product {
+    width: calc(25% - 20px); }
+  .offers .cards .btn {
+    padding: 0; } }
+
+@media screen and (max-width: 1245px) {
+  html {
+    font-size: 15px; }
+  .header .content {
+    gap: 1.375rem; } }
+
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px; }
+  .form-item .form-labels {
+    gap: 0.625rem; }
+  .banner .content form {
+    gap: 1.625rem; }
+  .header .action-block {
+    gap: 1rem; } }
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 13px; }
+  .banner .content form {
+    flex-wrap: wrap;
+    max-height: none; }
+  .banner .content form button[type="submit"] {
+    max-width: none !important; }
+  .form-item {
+    flex-grow: 1;
+    gap: 0.2rem; }
+  .banner .content form input:not([type="submit"]) {
+    max-width: none;
+    flex-grow: 1;
+    width: 100%; } }
+
+@media screen and (max-width: 992px) {
+  .offers .cards .card.product {
+    width: calc(50% - 20px); }
+    .offers .cards .card.product .swiper-img {
+      display: flex;
+      justify-content: center;
+      height: 100%; }
+    .offers .cards .card.product .swiper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: center;
+    margin-left: auto; }
+  .burger-menu span {
+    width: 40px;
+    height: 3px;
+    background-color: #3A86B7;
+    margin: 4px 0;
+    transition: 0.4s; }
+  .menu__block {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #FBFBFD;
+    transition: left 0.3s ease-in-out;
+    flex-direction: column;
+    padding: 2rem;
+    z-index: 1000;
+    box-shadow: -20px 0px 50px 5px; }
+  .menu__block.active {
+    left: 0;
+    /* Меню выдвигается вправо */ }
+  .menu {
+    flex-direction: column;
+    /* Вертикальное расположение элементов меню */
+    align-items: flex-start;
+    /* Выравнивание по левому краю */
+    gap: 1rem;
+    /* Отступы между элементами меню */ }
+  .link {
+    width: 100%; }
+  .sub-menu {
+    position: static;
+    border: none;
+    border-radius: 0;
+    background-color: transparent; }
+  .menu-item-has-children::after {
+    content: url("./src/icons/arrow-square-down.svg");
+    width: 20px;
+    height: 20px;
+    margin-left: 5px; }
+  .menu-item-has-children:hover .sub-menu {
+    display: block;
+    /* Показываем подменю */ }
+  .burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px); }
+  .burger-menu.active span:nth-child(2) {
+    opacity: 0; }
+  .burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px); }
+  .catalog-sidebar {
+    flex-direction: column-reverse; }
+  .catalog-sidebar .right-side::after {
+    display: none; }
+  .catalog-sidebar .right-side {
+    align-items: flex-start; }
+  .woof_price_filter,
+  .woof_meta_slider_container {
+    width: 85%; }
+  span.irs.irs--sharp.js-irs-0.irs-with-grid {
+    margin-right: 0px; } }
+
+@media screen and (max-width: 768px) {
+  .footer .container {
+    gap: 1rem;
+    flex-wrap: wrap; }
+  .footer-col.footer-menu {
+    flex-grow: 1;
+    align-items: center; }
+  .footer .footer-info {
+    align-items: start;
+    width: 100%; }
+  .footer .footer-info .address {
+    text-align: left; }
+  .banner {
+    align-items: center; }
+  .cards .card.article {
+    max-width: 100%; }
+  .banner-ad__text-block .left-side {
+    width: 50%; }
+  .heading-l {
+    font-size: 5.5vw; } }
+
+@media screen and (max-width: 560px) {
+  .header .action-block .text-block {
+    display: none; }
+  .offers .cards .card.product {
+    width: calc(80% - 20px); }
+  .banner .content {
+    gap: 2rem; } }
+
+@media screen and (max-width: 480px) {
+  .offers .cards .card.product {
+    width: calc(100% - 20px); }
+  .form-item .form-labels {
+    display: flex;
+    flex-direction: column; }
+  .banner-ad__text-block .left-side {
+    width: auto; }
+  .banner-ad__text-block {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; }
+  .banner-ad__text-block .btn {
+    padding: 5% !important; }
+  .footer .policy {
+    flex-wrap: wrap;
+    gap: 10px; }
+    .footer .policy .separator {
+      display: none; }
+  .call-form .wpcf7-form {
+    padding: 2rem; }
+  .woof_submit_search_form_container {
+    flex-wrap: wrap;
+    flex-direction: column-reverse; }
+  .button.woof_reset_search_form,
+  .button.woof_submit_search_form {
+    width: 100%;
+    justify-content: center; } }
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 12px; } }
+
 .container {
   margin: 0 auto;
   max-width: 1235px; }
@@ -1176,7 +1429,7 @@ address {
 .phone {
   font-style: normal;
   font-weight: 800;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 188%;
   letter-spacing: 0.6px; }
 
@@ -1186,7 +1439,7 @@ input[type="submit"] {
   justify-content: center;
   align-items: center;
   border: 1px solid #3A86B7;
-  padding: 16px 45px;
+  padding: 1rem 2.8125rem;
   width: 100%;
   gap: 10px;
   background: #3A86B7;
@@ -1212,7 +1465,8 @@ input[type="submit"] {
 .buttons {
   display: flex;
   width: max-content;
-  gap: 14px; }
+  gap: 14px;
+  max-width: 100%; }
 
 .advertisement {
   display: block;
@@ -1228,8 +1482,12 @@ input[type="submit"] {
 .section.videos,
 .banner-ad,
 .section.catalog,
-.section.favorites {
+.section.favorites,
+.section.changing-sides {
   padding: 70px 0; }
+
+.section.catalog {
+  overflow: hidden; }
 
 .accent {
   color: #3A86B7; }
@@ -1284,6 +1542,11 @@ input[type="submit"] {
   line-height: 140%;
   /* dark */
   color: #2B2D42; }
+
+a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] {
+  display: none !important; }
+  a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] img {
+    display: none !important; }
 
 /*!*****************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/swiper/swiper.css ***!

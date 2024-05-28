@@ -1,8 +1,64 @@
+html {
+    font-size: 16px;
+}
+
+.heading-l {
+    font-size: 2.75rem;
+}
+
+.heading-m {
+    font-size: 2rem;
+}
+
+.link {
+    font-size: 0.875rem;
+}
+
+
+.link-accent {
+    font-size: 1rem;
+}
+
+.text {
+    font-size: 1rem;
+
+    &-title {
+        font-size: 1rem;
+    }
+
+    &-sub {
+        font-size: 0.875rem;
+    }
+
+    &-sub-title {
+        font-size: 0.875rem;
+    }
+
+    &-attribute {
+        font-size: 0.75rem;
+    }
+
+    &-value {
+        font-size: 0.75rem;
+    }
+
+    &-date {
+        font-size: 0.875rem;
+    }
+}
+
+.form-title {
+    font-size: 1.5rem;
+}
+
+.form-text {
+    font-size: 1rem;
+}
+
 .heading-l {
     color: $white;
     font-style: normal;
     font-weight: 700;
-    font-size: 44px;
     line-height: 127%;
     text-transform: uppercase;
 }
@@ -10,7 +66,6 @@
 .heading-m {
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
     line-height: 150%;
     letter-spacing: 0.01em;
 }
@@ -18,23 +73,35 @@
 .link {
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
     line-height: 200%;
     align-items: center;
     letter-spacing: 0.3px;
 
     transition: $transition;
     cursor: pointer;
+
+    a {
+        transition: $transition;
+    }
 }
 
 .link:hover {
     color: $main;
+
+    &>.nav-link {
+        color: $main;
+    }
+}
+
+.header .menu .sub-menu .menu-item:hover {
+    .nav-link {
+        color: $main;
+    }
 }
 
 .link-accent {
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
     line-height: 200%;
     text-decoration-line: underline;
     text-transform: uppercase;
@@ -43,7 +110,6 @@
 
 .text {
     font-weight: 600;
-    font-size: 16px;
     line-height: 150%;
     display: flex;
     align-items: center;
@@ -53,7 +119,6 @@
     &-title {
         font-style: normal;
         font-weight: 700;
-        font-size: 16px;
         line-height: 140%;
         display: flex;
         align-items: center;
@@ -62,20 +127,17 @@
 
     &-sub {
         font-weight: 500;
-        font-size: 14px;
         line-height: 200%;
     }
 
     &-sub-title {
         font-weight: 600;
-        font-size: 14px;
         line-height: 186%;
     }
 
     &-attribute {
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
         line-height: 133%;
         letter-spacing: 0.1px;
         color: $gray-two;
@@ -84,7 +146,6 @@
     &-value {
         font-style: normal;
         font-weight: 600;
-        font-size: 12px;
         line-height: 167%;
         display: flex;
         letter-spacing: 0.1px;
@@ -92,7 +153,6 @@
 
     &-date {
         font-weight: 500;
-        font-size: 14px;
         line-height: 28px;
         color: #808E93;
 
@@ -104,14 +164,12 @@
 .form-title {
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
     line-height: 167%;
 }
 
 .form-text {
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
     line-height: 200%;
     color: #0E0E0E;
 }
@@ -128,3 +186,26 @@
     height: 14px;
     background-image: url(./src/icons/ic_date.svg);
 }
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1280px) {}
+
+@media screen and (max-width: 1245px) {}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 560px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}

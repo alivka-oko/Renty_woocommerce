@@ -37,7 +37,13 @@
                         <a href="<?php echo esc_url(home_url('/')); ?>" class="site-title-link"><?php bloginfo('name'); ?></a>
                     <?php endif; ?>
 
-                    <nav>
+                    <button class="burger-menu" id="burger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <nav class="menu__block" id="menu-block">
                         <ul class="menu">
                             <?php
                             wp_nav_menu([

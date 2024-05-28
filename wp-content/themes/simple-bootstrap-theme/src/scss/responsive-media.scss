@@ -1,0 +1,337 @@
+@media screen and (max-width: 1280px) {
+
+    .section.videos,
+    .banner-ad,
+    .section.catalog,
+    .section.favorites,
+    .section.offers,
+    .section.articles,
+    .banner .container {
+        padding: 70px 30px !important;
+    }
+
+    .section.call-form,
+    .section.footer {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .header .content {
+        padding: 18px 30px;
+    }
+
+    .offers {
+        .cards {
+            .card.product {
+                width: calc(25% - 20px);
+            }
+
+            .btn {
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1245px) {
+    html {
+        font-size: 15px;
+    }
+
+    .header .content {
+        gap: 1.375rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+
+    .form-item .form-labels {
+        gap: 0.625rem;
+    }
+
+    .banner .content form {
+        gap: 1.625rem;
+    }
+
+    .header .action-block {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 13px;
+    }
+
+    .banner .content form {
+        flex-wrap: wrap;
+        max-height: none;
+    }
+
+    .banner .content form button[type="submit"] {
+        max-width: none !important;
+    }
+
+    .form-item {
+        flex-grow: 1;
+        gap: 0.2rem;
+    }
+
+    .banner .content form input:not([type="submit"]) {
+        max-width: none;
+        flex-grow: 1;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .offers {
+        .cards {
+            .card.product {
+                width: calc(50% - 20px);
+
+                .swiper-img {
+                    display: flex;
+                    justify-content: center;
+                    height: 100%;
+                }
+
+                .swiper img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .burger-menu span {
+        width: 40px;
+        height: 3px;
+        background-color: $main;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+
+    .menu__block {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100%;
+        background-color: #FBFBFD;
+        transition: left 0.3s ease-in-out;
+        flex-direction: column;
+        padding: 2rem;
+        z-index: 1000;
+        box-shadow: -20px 0px 50px 5px;
+    }
+
+    .menu__block.active {
+        left: 0;
+        /* Меню выдвигается вправо */
+    }
+
+    .menu {
+        flex-direction: column;
+        /* Вертикальное расположение элементов меню */
+        align-items: flex-start;
+        /* Выравнивание по левому краю */
+        gap: 1rem;
+        /* Отступы между элементами меню */
+    }
+
+    .link {
+        // padding: 10px 0;
+        width: 100%;
+    }
+
+    .sub-menu {
+        position: static;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+    }
+
+    .menu-item-has-children::after {
+        content: url('./src/icons/arrow-square-down.svg');
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+    }
+
+    .menu-item-has-children:hover .sub-menu {
+        display: block;
+        /* Показываем подменю */
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .catalog-sidebar {
+        flex-direction: column-reverse;
+    }
+
+    .catalog-sidebar .right-side::after {
+        display: none;
+    }
+
+    .catalog-sidebar .right-side {
+        align-items: flex-start;
+    }
+
+    .woof_price_filter,
+    .woof_meta_slider_container {
+        width: 85%;
+    }
+
+    span.irs.irs--sharp.js-irs-0.irs-with-grid {
+        margin-right: 0px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .footer .container {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .footer-col.footer-menu {
+        flex-grow: 1;
+        align-items: center;
+    }
+
+    .footer .footer-info {
+        align-items: start;
+        width: 100%;
+    }
+
+    .footer .footer-info .address {
+        text-align: left;
+    }
+
+    .banner {
+        align-items: center;
+    }
+
+    .cards .card.article {
+        max-width: 100%;
+    }
+
+    .banner-ad__text-block .left-side {
+        width: 50%;
+    }
+
+    .heading-l {
+        font-size: 5.5vw;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    .header {
+        .action-block {
+            .text-block {
+                display: none;
+            }
+        }
+    }
+
+    .offers {
+        .cards {
+            .card.product {
+                width: calc(80% - 20px);
+            }
+        }
+    }
+
+    .banner .content {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .offers {
+        .cards {
+            .card.product {
+                width: calc(100% - 20px);
+            }
+        }
+    }
+
+    .form-item .form-labels {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-ad__text-block .left-side {
+        width: auto;
+    }
+
+    .banner-ad__text-block {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .banner-ad__text-block {
+        .btn {
+            padding: 5% !important;
+        }
+    }
+
+    .footer .policy {
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .separator {
+            display: none;
+        }
+    }
+
+    .call-form .wpcf7-form {
+        padding: 2rem;
+    }
+
+    .woof_submit_search_form_container {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+
+    .button.woof_reset_search_form,
+    .button.woof_submit_search_form {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 12px;
+    }
+
+}

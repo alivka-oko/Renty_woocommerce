@@ -11,6 +11,7 @@
 @import 'about.scss';
 @import 'contacts.scss';
 @import 'shop.scss';
+@import 'responsive-media.scss';
 
 .container {
     margin: 0 auto;
@@ -67,7 +68,7 @@ address {
 .phone {
     font-style: normal;
     font-weight: 800;
-    font-size: 17px;
+    font-size: 1.0625rem;
     line-height: 188%;
     letter-spacing: 0.6px;
 }
@@ -79,7 +80,7 @@ input[type="submit"] {
     align-items: center;
 
     border: 1px solid $main;
-    padding: 16px 45px;
+    padding: 1rem 2.8125rem;
     width: 100%;
     gap: 10px;
     background: $main;
@@ -113,6 +114,7 @@ input[type="submit"] {
     display: flex;
     width: max-content;
     gap: 14px;
+    max-width: 100%;
 }
 
 
@@ -132,8 +134,13 @@ input[type="submit"] {
 .section.videos,
 .banner-ad,
 .section.catalog,
-.section.favorites {
+.section.favorites,
+.section.changing-sides {
     padding: $padding;
+}
+
+.section.catalog {
+    overflow: hidden;
 }
 
 .accent {
@@ -199,4 +206,12 @@ input[type="submit"] {
     line-height: 140%;
     /* dark */
     color: #2B2D42;
+}
+
+a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] {
+    display: none !important;
+
+    img {
+        display: none !important;
+    }
 }

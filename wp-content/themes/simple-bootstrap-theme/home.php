@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Homepage */
+/* Template  me: Homepage */
 get_header();
 ?>
 <main class="main">
@@ -41,7 +41,7 @@ get_header();
             <div class="content">
                 <div class="headline">
                     <h2 class="heading-m text-up">
-                        Лучшие предложения 
+                        Лучшие предложения
                     </h2>
                     <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="link-accent">Все
                         предложения</a>
@@ -200,7 +200,7 @@ get_header();
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
+                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -209,7 +209,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
+                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -218,7 +218,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
+                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -227,7 +227,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
+                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
@@ -236,7 +236,7 @@ get_header();
                             </div>
                             <div class="swiper-slide">
                                 <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/04/road-sport-vintage-wheel-retro-old-scaled.jpg" alt="">
+                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
                                     <h5 class="text-sub">Финансы</h5>
                                     <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
                                         к этому подготовиться?</p>
