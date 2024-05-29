@@ -34,6 +34,8 @@ function load_theme_scripts()
 
 add_action("wp_enqueue_scripts", "load_theme_scripts");
 
+add_theme_support('post-thumbnails'); // для всех типов постов
+
 function simple_basic_theme_nav_config()
 {
     register_nav_menus(
@@ -457,17 +459,18 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
             echo $count;
         }
 
-        function get_min_max_values() {
+        function get_min_max_values()
+        {
             global $wpdb;
-        
+
             // Получение минимальной и максимальной цены
             $price_min = $wpdb->get_var("SELECT MIN(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = '_price'");
             $price_max = $wpdb->get_var("SELECT MAX(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = '_price'");
-        
+
             // Получение минимальной и максимальной площади
             $area_min = $wpdb->get_var("SELECT MIN(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = 'area-value'");
             $area_max = $wpdb->get_var("SELECT MAX(meta_value + 0) FROM {$wpdb->postmeta} WHERE meta_key = 'area-value'");
-        
+
             // Локализация скрипта для передачи данных в JavaScript
             wp_localize_script('webpack', 'productData', array(
                 'priceMin' => $price_min,
@@ -477,4 +480,3 @@ if (defined('YITH_WCWL') && !function_exists('yith_wcwl_get_items_count')) {
             ));
         }
         add_action('wp_enqueue_scripts', 'get_min_max_values');
-        

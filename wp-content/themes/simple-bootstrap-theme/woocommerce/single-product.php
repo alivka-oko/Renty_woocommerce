@@ -4,13 +4,7 @@
 	<section class="section product-page">
 		<div class="container">
 			<div class="content">
-				<?php
-				if (function_exists('bcn_display')) {
-					echo '<nav class="breadcrumbs">';
-					bcn_display();
-					echo '</nav>';
-				}
-				?>
+				<?php get_template_part('breadcrumb') ?>
 				<?php
 				if (have_posts()) {
 					while (have_posts()) {

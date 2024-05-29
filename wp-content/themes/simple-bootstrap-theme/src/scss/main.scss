@@ -12,6 +12,7 @@
 @import 'contacts.scss';
 @import 'shop.scss';
 @import 'responsive-media.scss';
+@import 'category.scss';
 
 .container {
     margin: 0 auto;
@@ -213,5 +214,21 @@ a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] {
 
     img {
         display: none !important;
+    }
+}
+
+.breadcrumbs {
+    color: #808E93;
+    font-weight: 600;
+
+    display: flex;
+    gap: 14px;
+    align-items: center;
+
+    a {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+        color: #808E93;
     }
 }

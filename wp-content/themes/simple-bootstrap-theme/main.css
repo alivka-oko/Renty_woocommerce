@@ -556,19 +556,6 @@ html {
 section.section.product-page {
   padding: 50px 0; }
 
-.breadcrumbs {
-  margin-bottom: 40px;
-  color: #808E93;
-  font-weight: 600;
-  display: flex;
-  gap: 14px;
-  align-items: center; }
-  .breadcrumbs a {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 20px;
-    color: #808E93; }
-
 .object {
   display: flex;
   flex-direction: column;
@@ -628,6 +615,9 @@ section.section.product-page {
       border-bottom: 1px solid #E1E6EE; }
       .object .descriptions .item .text-sub {
         color: #2B2D42; }
+
+.product-page .breadcrumbs {
+  margin-bottom: 44px; }
 
 .gallery {
   padding: 40px; }
@@ -746,10 +736,17 @@ section.section.product-page {
   background-repeat: no-repeat;
   background-position: center; }
 
+.single-content .content {
+  display: flex;
+  gap: 3.43rem; }
+
+.single-content .post-thumbnail-socials {
+  flex: 0 0 auto; }
+
 /*! wysiwyg.css v0.0.3 | MIT License | github.com/jgthms/wysiwyg.css */
 .wysiwyg {
   line-height: 1.6;
-  font-size: 14px; }
+  font-size: 1rem; }
 
 .wysiwyg a {
   text-decoration: none; }
@@ -999,7 +996,6 @@ section.section.product-page {
 .changing-sides .content-block {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 130px; }
   .changing-sides .content-block.left {
     flex-direction: row-reverse;
@@ -1012,6 +1008,16 @@ section.section.product-page {
     border-radius: 4px;
     object-fit: cover;
     border-radius: 4px; }
+  .changing-sides .content-block .title-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .changing-sides .content-block .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .changing-sides .content-block h1,
   .changing-sides .content-block h2 {
     margin-bottom: 20px; }
 
@@ -1200,7 +1206,8 @@ span.irs-from {
   .banner .container {
     padding: 70px 30px !important; }
   .section.call-form,
-  .section.footer {
+  .section.footer,
+  .changing-sides .content {
     padding-left: 30px;
     padding-right: 30px; }
   .header .content {
@@ -1240,7 +1247,13 @@ span.irs-from {
   .banner .content form input:not([type="submit"]) {
     max-width: none;
     flex-grow: 1;
-    width: 100%; } }
+    width: 100%; }
+  .changing-sides .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; }
+  .changing-sides .content-block {
+    gap: 3rem; } }
 
 @media screen and (max-width: 992px) {
   .offers .cards .card.product {
@@ -1319,7 +1332,9 @@ span.irs-from {
   .woof_meta_slider_container {
     width: 85%; }
   span.irs.irs--sharp.js-irs-0.irs-with-grid {
-    margin-right: 0px; } }
+    margin-right: 0px; }
+  .changing-sides .content-block .content-block__img {
+    width: 25vh; } }
 
 @media screen and (max-width: 768px) {
   .footer .container {
@@ -1340,7 +1355,12 @@ span.irs-from {
   .banner-ad__text-block .left-side {
     width: 50%; }
   .heading-l {
-    font-size: 5.5vw; } }
+    font-size: 5.5vw; }
+  .changing-sides .content-block {
+    flex-direction: column !important; }
+  .changing-sides .content-block .content-block__img {
+    width: 100%;
+    height: 30vh; } }
 
 @media screen and (max-width: 560px) {
   .header .action-block .text-block {
@@ -1383,6 +1403,25 @@ span.irs-from {
 @media screen and (max-width: 320px) {
   html {
     font-size: 12px; } }
+
+.section.category {
+  padding: 55px 30px; }
+  .section.category .breadcrumbs {
+    margin-bottom: 40px; }
+  .section.category .cards {
+    margin: 50px 0; }
+  .section.category iframe {
+    border-radius: 4px !important;
+    height: 190px; }
+  .section.category .featured-video-plus.fvp-center {
+    height: 190px; }
+  .section.category .videos-page iframe {
+    height: 276px; }
+  .section.category .videos-page .featured-video-plus.fvp-center {
+    height: 276px; }
+  .section.category img.attachment-full.size-full.wp-post-image {
+    max-height: 190px !important;
+    object-fit: cover; }
 
 .container {
   margin: 0 auto;
@@ -1547,6 +1586,18 @@ a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] {
   display: none !important; }
   a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] img {
     display: none !important; }
+
+.breadcrumbs {
+  color: #808E93;
+  font-weight: 600;
+  display: flex;
+  gap: 14px;
+  align-items: center; }
+  .breadcrumbs a {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    color: #808E93; }
 
 /*!*****************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/swiper/swiper.css ***!

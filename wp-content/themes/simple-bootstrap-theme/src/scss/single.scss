@@ -2,23 +2,6 @@ section.section.product-page {
     padding: 50px 0;
 }
 
-.breadcrumbs {
-    margin-bottom: 40px;
-    color: #808E93;
-    font-weight: 600;
-
-    display: flex;
-    gap: 14px;
-    align-items: center;
-
-    a {
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 20px;
-        color: #808E93;
-    }
-}
-
 .object {
     display: flex;
     flex-direction: column;
@@ -113,6 +96,12 @@ section.section.product-page {
                 color: #2B2D42;
             }
         }
+    }
+}
+
+.product-page {
+    .breadcrumbs {
+        margin-bottom: 44px;
     }
 }
 
@@ -260,4 +249,15 @@ section.section.product-page {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.single-content {
+    .content {
+        display: flex;
+        gap: 3.43rem;
+    }
+
+    .post-thumbnail-socials {
+        flex: 0 0 auto;
+    }
 }

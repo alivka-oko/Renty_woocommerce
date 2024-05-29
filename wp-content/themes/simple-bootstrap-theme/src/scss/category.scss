@@ -1,0 +1,36 @@
+.section.category {
+    padding: 55px 30px;
+
+    .breadcrumbs {
+        margin-bottom: 40px;
+    }
+
+    .cards {
+        margin: 50px 0;
+    }
+
+    iframe {
+        border-radius: 4px !important;
+        height: 190px;
+    }
+
+    .featured-video-plus.fvp-center {
+        height: 190px;
+    }
+
+    .videos-page {
+
+        iframe {
+            height: 276px;
+        }
+
+        .featured-video-plus.fvp-center {
+            height: 276px;
+        }
+    }
+
+    img.attachment-full.size-full.wp-post-image {
+        max-height: 190px !important;
+        object-fit: cover;
+    }
+}
