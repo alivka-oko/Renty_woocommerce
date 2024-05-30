@@ -16,6 +16,15 @@
             gap: 20px;
         }
     }
+
+    .advertisement {
+        img {
+            border-radius: 4px;
+            height: 155px;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
 }
 
 .call-form {

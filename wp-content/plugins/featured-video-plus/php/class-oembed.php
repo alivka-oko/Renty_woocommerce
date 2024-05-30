@@ -5,7 +5,7 @@
  *
  * @link http://codex.wordpress.org/oEmbed
  * @link http://oembed.com/ oEmbed Homepage
- * @link https://github.com/WordPress/WordPress/tree/master/wp-includes/class-oembed.php
+ * @link https://github.com/WordPress/WordPress/tree/master/wp-includes/class-wp-oembed.php
  *
  * @package Featured Video Plus
  * @subpackage oEmbed
@@ -16,7 +16,7 @@ class FVP_oEmbed {
 
 	public function __construct() {
 		// Does not extend oEmbed in order to not initialize it a second time.
-		require_once( ABSPATH . '/' . WPINC . '/class-oembed.php' );
+		require_once( ABSPATH . '/' . WPINC . '/class-wp-oembed.php' );
 		$this->oembed = _wp_oembed_get_object();
 
 		add_filter(
@@ -227,7 +227,7 @@ class FVP_oEmbed {
 	 *
 	 * Backport from WordPress 4.0.0 to make this method available for earlier
 	 * WordPress releases.
-	 * @see https://github.com/WordPress/WordPress/blob/ed4aafa6929b36dc1d06708831a7cef258c16b54/wp-includes/class-oembed.php#L188-L226
+	 * @see https://github.com/WordPress/WordPress/blob/ed4aafa6929b36dc1d06708831a7cef258c16b54/wp-includes/class-wp-oembed.php#L188-L226
 	 *
 	 * @param string        $url  The URL to the content.
 	 * @param string|array  $args Optional provider arguments.

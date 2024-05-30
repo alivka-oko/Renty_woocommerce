@@ -1,5 +1,7 @@
 <?php
-/* Template  me: Homepage */
+/*
+Template Name: Главная
+*/
 get_header();
 ?>
 <main class="main">
@@ -163,11 +165,11 @@ get_header();
     <section class="section banner-ad">
         <div class="container">
             <div class="content">
-                <a class="advertisement" href="#" style="background:url('../wp-content/uploads/2024/05/advertisement.png')"></a>
+                <a class="advertisement" href="<?php echo esc_url(get_theme_mod('advertisement_banner_url')); ?>"><img src="<?php echo esc_url(get_theme_mod('advertisement_banner_image')); ?>" alt="Рекламный баннер"></a>
                 <div class="banner-ad__text-block">
                     <div class="left-side">
-                        <h3 class="heading-m">Бесплатный подбор офиса и экскурсии по объектам!</h3>
-                        <p>Оставьте заявку или позвоните и наши специалисты расскажут вам подробную информацию.</p>
+                        <h3 class="heading-m"><?php echo esc_html(get_theme_mod('advertisement_banner_title')); ?></h3>
+                        <p><?php echo esc_html(get_theme_mod('advertisement_banner_description')); ?></p>
                         <div class="buttons">
                             <button class="btn">Заказать звонок</button>
                             <button class="btn btn-transparent">Оставить заявку</button>
@@ -249,7 +251,7 @@ get_header();
             </div>
         </div>
     </section>
-    <!-- <section class="section videos">
+    <section class="section videos">
         <div class="container">
             <div class="content">
                 <div class="headline">
@@ -300,7 +302,7 @@ get_header();
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <?php get_template_part('contact-form') ?>
 </main>
 <?php get_footer() ?>

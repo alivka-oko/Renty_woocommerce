@@ -48,13 +48,24 @@ const swiperSimilar = new Swiper('.swiper.similar', {
     direction: 'horizontal',
     loop: true,
     spaceBetween: 25,
-    slidesPerView: 4,
+    slidesPerView: 1,
     autoplay: {
         delay: 100000,
     },
     navigation: {
         nextEl: ".similar .control-element.next",
         prevEl: ".similar .control-element.prev",
+    },
+    breakpoints: {
+        600: {
+            slidesPerView: 2
+        },
+        768: {
+            slidesPerView: 3
+        },
+        1024: {
+            slidesPerView: 4
+        },
     },
 });
 
@@ -64,10 +75,18 @@ const swiperVideos = new Swiper('.swiper.videos', {
     direction: 'horizontal',
     loop: true,
     spaceBetween: 25,
-    slidesPerView: 3,
+    slidesPerView: 1,
     navigation: {
         nextEl: ".videos .control-element.next",
         prevEl: ".videos .control-element.prev",
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2
+        },
+        960: {
+            slidesPerView: 3
+        },
     },
 });
 // Находим все элементы .swiper на странице

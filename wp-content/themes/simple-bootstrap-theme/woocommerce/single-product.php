@@ -37,7 +37,7 @@
 											<?php endforeach ?>
 											<?php if ($post_thumbnail_url) : ?>
 												<div class="swiper-slide">
-													<a href="<?= esc_url(wp_get_attachment_url($attachment_id)) ?>" data-lightbox="gallery">
+													<a href="<?= esc_url($post_thumbnail_url); ?>" data-lightbox="gallery">
 														<img src="<?= esc_url($post_thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 													</a>
 												</div>
@@ -54,6 +54,11 @@
 													<img src="<?= esc_url(wp_get_attachment_url($attachment_id)) ?>" alt="">
 												</div>
 											<?php endforeach ?>
+											<?php if ($post_thumbnail_url) : ?>
+												<div class="swiper-slide">
+													<img src="<?= esc_url($post_thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+												</div>
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>
@@ -198,7 +203,7 @@
 				</div>
 				<?php
 				// Вывод похожих товаров
-				$related_products = wc_get_related_products(get_the_ID(), 12); // Получаем 6 связанных товаров
+				$related_products = wc_get_related_products(get_the_ID(), 12); 
 
 				if ($related_products) : ?>
 					<div class="cards">

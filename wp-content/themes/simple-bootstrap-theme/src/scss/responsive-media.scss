@@ -12,9 +12,13 @@
 
     .section.call-form,
     .section.footer,
-    .changing-sides .content {
-        padding-left: 30px;
-        padding-right: 30px;
+    .changing-sides .content,
+    .section.product-page,
+    .section.similar,
+    .section.single,
+    .single-content {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
     }
 
     .header .content {
@@ -41,6 +45,20 @@
 
     .header .content {
         gap: 1.375rem;
+    }
+
+    .object__card {
+        justify-content: space-between;
+
+        .gallery {
+            max-width: 70%;
+
+            .swiper_main {
+                max-width: 830px;
+                border-radius: 4px;
+                height: 50vh;
+            }
+        }
     }
 }
 
@@ -225,9 +243,51 @@
         width: 25vh;
     }
 
+    .object__card {
+        flex-direction: column;
+
+        .gallery {
+            max-width: 100%;
+        }
+
+        .options {
+            max-width: none;
+        }
+    }
+
+    .single-content .content {
+        flex-direction: column-reverse;
+    }
+
+    .single-content img.wp-post-image {
+        width: 100%;
+        max-width: none;
+        max-height: 35vh;
+    }
+
+    .single-content .socials {
+        justify-content: flex-end;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .gallery {
+        padding: 20px;
+    }
+
+    .swiper_thumbnail .swiper-wrapper {
+        gap: 2px;
+        max-width: 100%;
+        padding: 3px;
+    }
+
+    .object__card .gallery .swiper_main {
+        height: 30vh;
+    }
+
+    .object__info {
+        flex-direction: column;
+    }
 
     .footer .container {
         gap: 1rem;
@@ -275,6 +335,19 @@
 }
 
 @media screen and (max-width: 560px) {
+
+    .section.call-form,
+    .section.footer,
+    .changing-sides .content,
+    .section.product-page,
+    .section.similar {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .header .content {
+        padding: 18px 15px;
+    }
 
     .header {
         .action-block {

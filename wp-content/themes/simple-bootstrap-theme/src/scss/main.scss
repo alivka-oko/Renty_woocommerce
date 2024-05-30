@@ -220,15 +220,37 @@ a[href~="https://www.yhunter.ru/portfolio/dev/yamaps/"] {
 .breadcrumbs {
     color: #808E93;
     font-weight: 600;
-
+    flex-wrap: wrap;
     display: flex;
-    gap: 14px;
+    gap: 0.875rem;
     align-items: center;
 
-    a {
+    a,
+    span.current-item {
         font-weight: 600;
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 20px;
         color: #808E93;
+    }
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+
+    .title-control {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .control {
+            display: flex;
+            gap: 24px;
+            cursor: pointer;
+        }
     }
 }

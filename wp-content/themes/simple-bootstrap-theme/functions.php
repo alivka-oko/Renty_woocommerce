@@ -201,37 +201,36 @@ add_action('customize_register', function ($customizer) {
         )
     );
 
-    // Добавляем поле для ИНН
     $customizer->add_setting(
-        'inn',
+        'weekdays',
         array(
             'default' => ''
         )
     );
     $customizer->add_control(
-        'inn',
+        'weekdays',
         array(
-            'label' => 'ИНН',
+            'label' => 'График работы в будни (Пн-Пт)',
             'section' => 'example_section_one',
             'type' => 'text',
         )
     );
 
-    // Добавляем поле для КПП
     $customizer->add_setting(
-        'kpp',
+        'weekends',
         array(
             'default' => ''
         )
     );
     $customizer->add_control(
-        'kpp',
+        'weekends',
         array(
-            'label' => 'КПП',
+            'label' => 'График работы в выходные (Сб-Вс)',
             'section' => 'example_section_one',
             'type' => 'text',
         )
     );
+
 
     $customizer->add_setting(
         'map',
@@ -248,6 +247,70 @@ add_action('customize_register', function ($customizer) {
         )
     );
 });
+
+// БАННЕР
+function mytheme_customize_register($wp_customize)
+{
+    // Добавляем секцию для рекламного баннера
+    $wp_customize->add_section('advertisement_banner_section', array(
+        'title'      => __('Рекламный баннер', 'mytheme'),
+        'priority'   => 30,
+    ));
+
+    // Добавляем настройку для загрузки изображения
+    $wp_customize->add_setting('advertisement_banner_image', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'advertisement_banner_image_control', array(
+        'label'      => __('Загрузите баннер (1235px x 155px)', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_image',
+    )));
+
+    // Добавляем настройку для заголовка
+    $wp_customize->add_setting('advertisement_banner_title', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('advertisement_banner_title_control', array(
+        'label'      => __('Заголовок', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_title',
+        'type'       => 'text',
+    ));
+
+    // Добавляем настройку для ссылки
+    $wp_customize->add_setting('advertisement_banner_url', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('advertisement_banner_url_control', array(
+        'label'      => __('Заголовок', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_title',
+        'type'       => 'text',
+    ));
+
+    // Добавляем настройку для описания
+    $wp_customize->add_setting('advertisement_banner_description', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('advertisement_banner_description_control', array(
+        'label'      => __('Описание', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_description',
+        'type'       => 'textarea',
+    ));
+}
+add_action('customize_register', 'mytheme_customize_register');
+
+
 
 // ________убираем лишние теги в CF7_____________
 add_filter('wpcf7_autop_or_not', '__return_false');

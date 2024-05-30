@@ -41,4 +41,24 @@ Template Name: Контакты
         </div>
     </div>
 </section>
+<section class="section banner-ad">
+    <div class="container">
+        <div class="content" style="flex-direction: column-reverse;">
+            <a class="advertisement" href="#"><img src="../wp-content/uploads/2024/05/advertisement.png" alt="ad banner"></a>
+            <div class="banner-ad__text-block">
+                <div class="left-side">
+                    <h3 class="heading-m">Бесплатный подбор офиса и экскурсии по объектам!</h3>
+                    <p>Оставьте заявку или позвоните и наши специалисты расскажут вам подробную информацию.</p>
+                    <div class="buttons">
+                        <button class="btn">Заказать звонок</button>
+                        <button class="btn btn-transparent">Оставить заявку</button>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <img src="../wp-content/uploads/2024/05/Frame-18136.png" alt="excursion">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <?php get_footer() ?>

@@ -96,25 +96,7 @@
 
 
 
-.headline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
 
-    .title-control {
-        display: flex;
-        gap: 35px;
-        align-items: center;
-
-        .control {
-            display: flex;
-            gap: 24px;
-            cursor: pointer;
-        }
-    }
-}
 
 .articles {
     .cards {
