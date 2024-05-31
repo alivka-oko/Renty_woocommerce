@@ -9,8 +9,7 @@ get_header();
         <div class="container">
             <div class="content">
                 <h1 class="heading-l">
-                    Коммерческие помещения<br>
-                    в Петрозаводске
+                    <?= CFS()->get('title') ?>
                 </h1>
                 <!-- Форма поиска -->
                 <form id="search-form">
@@ -162,26 +161,7 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="section banner-ad">
-        <div class="container">
-            <div class="content">
-                <a class="advertisement" href="<?php echo esc_url(get_theme_mod('advertisement_banner_url')); ?>"><img src="<?php echo esc_url(get_theme_mod('advertisement_banner_image')); ?>" alt="Рекламный баннер"></a>
-                <div class="banner-ad__text-block">
-                    <div class="left-side">
-                        <h3 class="heading-m"><?php echo esc_html(get_theme_mod('advertisement_banner_title')); ?></h3>
-                        <p><?php echo esc_html(get_theme_mod('advertisement_banner_description')); ?></p>
-                        <div class="buttons">
-                            <button class="btn">Заказать звонок</button>
-                            <button class="btn btn-transparent">Оставить заявку</button>
-                        </div>
-                    </div>
-                    <div class="right-side">
-                        <img src="../wp-content/uploads/2024/05/Frame-18136.png" alt="excursion">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part('ad-banner') ?>
     <section class="section articles">
         <div class="container">
             <div class="content">

@@ -5,10 +5,10 @@
             <div class="content">
                 <?php get_template_part('breadcrumb') ?>
                 <div class="headline">
-                    <h2 class="heading-m text-up">
+                    <h1 class="heading-m text-up">
                         <?php if (is_category())
                             echo get_queried_object()->name; ?>
-                    </h2>
+                    </h1>
                 </div>
                 <div class="articles-page">
                     <div class="cards">
@@ -52,6 +52,6 @@
             </div>
         </div>
     </section>
-
+    <?php get_template_part('ad-banner') ?>
 </main>
 <?php get_footer() ?>

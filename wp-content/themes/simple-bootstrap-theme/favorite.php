@@ -7,9 +7,9 @@ get_header();
     <div class="container">
         <div class="content">
             <div class="headline">
-                <h2 class="heading-m text-up">
-                    Избранное
-                </h2>
+                <h1 class="heading-m text-up">
+                    <?php the_title() ?>
+                </h1>
             </div>
             <div class="cards">
                 <?php
@@ -112,6 +112,7 @@ get_header();
         </div>
     </div>
 </section>
+<?php get_template_part('ad-banner') ?>
 <script>
     let ordering = document.querySelector('.woocommerce-ordering');
     let buttons_form_container = document.querySelector('.woof_submit_search_form_container');
@@ -119,4 +120,3 @@ get_header();
 </script>
 
 <?php get_footer(); ?>
-

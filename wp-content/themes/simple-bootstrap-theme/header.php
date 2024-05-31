@@ -62,7 +62,7 @@
                         <?php
                         $phoneico = get_theme_mod('phoneico');
                         if ($phoneico) { ?>
-                            <a href="tel:<?= $phoneico ?>">
+                            <a href="tel:<?= get_theme_mod('phone', ''); ?>">
                                 <img src="<?= $phoneico ?>" alt="call-ico">
                             </a>
                         <?php

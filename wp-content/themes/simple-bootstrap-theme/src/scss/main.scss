@@ -96,13 +96,26 @@ input[type="submit"] {
     text-align: center;
     white-space: nowrap;
 
+    transition: $transition;
+
     cursor: pointer;
     max-width: 195px;
+
+    &:hover {
+        background: transparent !important;
+        color: $main !important;
+
+    }
 }
 
 .btn-transparent {
     background: transparent !important;
     color: $main !important;
+
+    &:hover {
+        background: $main !important;
+        color: $white !important;
+    }
 }
 
 

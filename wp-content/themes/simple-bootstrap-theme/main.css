@@ -386,7 +386,7 @@ html {
       min-height: 550px; }
     .cards .card.video {
       gap: 15px;
-      width: 395px; }
+      max-width: 395px; }
     .cards .card.article {
       max-width: 290px;
       gap: 16px; }
@@ -1580,12 +1580,20 @@ input[type="submit"] {
   letter-spacing: 0.02em;
   text-align: center;
   white-space: nowrap;
+  transition: ease-in 0.2s;
   cursor: pointer;
   max-width: 195px; }
+  .btn:hover,
+  input[type="submit"]:hover {
+    background: transparent !important;
+    color: #3A86B7 !important; }
 
 .btn-transparent {
   background: transparent !important;
   color: #3A86B7 !important; }
+  .btn-transparent:hover {
+    background: #3A86B7 !important;
+    color: #fff !important; }
 
 .text-up {
   text-transform: uppercase; }

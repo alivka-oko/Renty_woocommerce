@@ -168,25 +168,7 @@
 			<?= CFS()->get('map') ?>
 		</section>
 	<?php endif ?>
-	<section class="section banner-ad">
-		<div class="container">
-			<div class="content">
-				<div class="banner-ad__text-block">
-					<div class="left-side">
-						<h3 class="heading-m">Бесплатный подбор офиса и экскурсии по объектам!</h3>
-						<p>Оставьте заявку или позвоните и наши специалисты расскажут вам подробную информацию.</p>
-						<div class="buttons">
-							<button class="btn">Заказать звонок</button>
-							<button class="btn btn-transparent">Оставить заявку</button>
-						</div>
-					</div>
-					<div class="right-side">
-						<img src="http://renty/wp-content/uploads/2024/05/Frame-18136.png" alt="excursion">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part('ad-banner') ?>
 	<section class="section similar">
 		<div class="container">
 			<div class="content">
@@ -203,7 +185,7 @@
 				</div>
 				<?php
 				// Вывод похожих товаров
-				$related_products = wc_get_related_products(get_the_ID(), 12); 
+				$related_products = wc_get_related_products(get_the_ID(), 12);
 
 				if ($related_products) : ?>
 					<div class="cards">

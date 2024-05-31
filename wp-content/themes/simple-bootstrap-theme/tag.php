@@ -5,9 +5,9 @@
             <div class="content">
                 <?php get_template_part('breadcrumb') ?>
                 <div class="headline">
-                    <h2 class="heading-m text-up">
+                    <h1 class="heading-m text-up">
                         <?php single_tag_title(); ?>
-                    </h2>
+                    </h1>
                 </div>
                 <div class="articles-page">
                     <div class="cards">

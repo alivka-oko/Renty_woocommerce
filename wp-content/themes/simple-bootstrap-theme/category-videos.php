@@ -29,6 +29,7 @@
             </div>
         </div>
     </section>
+    <?php get_template_part('ad-banner') ?>
 
 </main>
 <?php get_footer() ?>

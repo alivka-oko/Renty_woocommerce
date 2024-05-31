@@ -41,7 +41,7 @@ function simple_basic_theme_nav_config()
     register_nav_menus(
         array(
             "theme_primary_menu" => "Главное меню",
-            "theme_sidebar_menu" => "Боковое меню"
+            "theme_footer_menu" => "Нижнее меню"
         )
     );
 
@@ -167,6 +167,22 @@ add_action('customize_register', function ($customizer) {
         )
     );
     //
+    // Добавляем поле для адреса
+    $customizer->add_setting(
+        'mail',
+        array(
+            'default' => ''
+        )
+    );
+    $customizer->add_control(
+        'mail',
+        array(
+            'label' => 'Почта',
+            'section' => 'example_section_one',
+            'type' => 'text',
+        )
+    );
+    //
     $customizer->add_setting(
         'phoneico',
         array(
@@ -185,21 +201,6 @@ add_action('customize_register', function ($customizer) {
         )
     );
 
-    // Добавляем поле для адреса электронной почты
-    $customizer->add_setting(
-        'email',
-        array(
-            'default' => ''
-        )
-    );
-    $customizer->add_control(
-        'email',
-        array(
-            'label' => 'Адрес электронной почты',
-            'section' => 'example_section_one',
-            'type' => 'text',
-        )
-    );
 
     $customizer->add_setting(
         'weekdays',
@@ -243,7 +244,7 @@ add_action('customize_register', function ($customizer) {
         array(
             'label' => 'Карта',
             'section' => 'example_section_one',
-            'type' => 'text',
+            'type' => 'textarea',
         )
     );
 });
@@ -269,6 +270,20 @@ function mytheme_customize_register($wp_customize)
         'settings'   => 'advertisement_banner_image',
     )));
 
+    // Добавляем настройку для ссылки
+    $wp_customize->add_setting('advertisement_banner_url', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('advertisement_banner_url_control', array(
+        'label'      => __('Ссылка', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_url',
+        'type'       => 'text',
+    ));
+
+
     // Добавляем настройку для заголовка
     $wp_customize->add_setting('advertisement_banner_title', array(
         'default'    => '',
@@ -282,18 +297,6 @@ function mytheme_customize_register($wp_customize)
         'type'       => 'text',
     ));
 
-    // Добавляем настройку для ссылки
-    $wp_customize->add_setting('advertisement_banner_url', array(
-        'default'    => '',
-        'transport'  => 'refresh',
-    ));
-
-    $wp_customize->add_control('advertisement_banner_url_control', array(
-        'label'      => __('Заголовок', 'mytheme'),
-        'section'    => 'advertisement_banner_section',
-        'settings'   => 'advertisement_banner_title',
-        'type'       => 'text',
-    ));
 
     // Добавляем настройку для описания
     $wp_customize->add_setting('advertisement_banner_description', array(
@@ -307,9 +310,81 @@ function mytheme_customize_register($wp_customize)
         'settings'   => 'advertisement_banner_description',
         'type'       => 'textarea',
     ));
+    // Добавляем настройку для загрузки изображения
+    $wp_customize->add_setting('advertisement_banner_small_image', array(
+        'default'    => '',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'advertisement_banner_small_image_control', array(
+        'label'      => __('Небольшое изображение у текста', 'mytheme'),
+        'section'    => 'advertisement_banner_section',
+        'settings'   => 'advertisement_banner_small_image',
+    )));
 }
 add_action('customize_register', 'mytheme_customize_register');
 
+function sosials_register($wp_customize)
+{
+    // Добавляем секцию для рекламного баннера
+    $wp_customize->add_section('sosials_section', array(
+        'title'      => __('Социальные сети', 'mytheme'),
+        'priority'   => 30,
+    ));
+
+    // ВК
+    $wp_customize->add_setting('vk_url', array(
+        'default'    => 'https://vk.com/',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('vk_url_control', array(
+        'label'      => __('ВКонтакте', 'mytheme'),
+        'section'    => 'sosials_section',
+        'settings'   => 'vk_url',
+        'type'       => 'text',
+    ));
+
+    // Дзен
+    $wp_customize->add_setting('dzen_url', array(
+        'default'    => 'https://dzen.ru/',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('dzen_url_control', array(
+        'label'      => __('Дзен', 'mytheme'),
+        'section'    => 'sosials_section',
+        'settings'   => 'dzen_url',
+        'type'       => 'text',
+    ));
+
+    // youtube
+    $wp_customize->add_setting('youtube_url', array(
+        'default'    => 'https://youtube.com/',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('youtube_url_control', array(
+        'label'      => __('YouTube', 'mytheme'),
+        'section'    => 'sosials_section',
+        'settings'   => 'youtube_url',
+        'type'       => 'text',
+    ));
+
+    // Telegram
+    $wp_customize->add_setting('tg_url', array(
+        'default'    => 'https://t.me/',
+        'transport'  => 'refresh',
+    ));
+
+    $wp_customize->add_control('tg_url_control', array(
+        'label'      => __('Телеграм', 'mytheme'),
+        'section'    => 'sosials_section',
+        'settings'   => 'tg_url',
+        'type'       => 'text',
+    ));
+}
+add_action('customize_register', 'sosials_register');
 
 
 // ________убираем лишние теги в CF7_____________

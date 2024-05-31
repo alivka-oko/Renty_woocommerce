@@ -7,9 +7,9 @@ get_header('shop');
 	<div class="container">
 		<div class="content">
 			<div class="headline">
-				<h2 class="heading-m text-up">
+				<h1 class="heading-m text-up">
 					Коммерческие помещения
-				</h2>
+				</h1>
 			</div>
 
 			<div class="catalog-sidebar">
