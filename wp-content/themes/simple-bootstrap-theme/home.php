@@ -180,51 +180,47 @@ get_header();
                 <div class="cards">
                     <div class="swiper articles">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
-                                    <h5 class="text-sub">Финансы</h5>
-                                    <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
-                                        к этому подготовиться?</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
-                                    <h5 class="text-sub">Финансы</h5>
-                                    <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
-                                        к этому подготовиться?</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
-                                    <h5 class="text-sub">Финансы</h5>
-                                    <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
-                                        к этому подготовиться?</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
-                                    <h5 class="text-sub">Финансы</h5>
-                                    <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
-                                        к этому подготовиться?</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="article card">
-                                    <img src="../wp-content/uploads/2024/05/lead_form.png" alt="">
-                                    <h5 class="text-sub">Финансы</h5>
-                                    <p class="text">Как изменятся цены на московское жилье к началу 2023 года. Как можно
-                                        к этому подготовиться?</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </a>
-                            </div>
+                            <?php
+                            $args = array(
+                                'category_name' => 'articles', // Category slug
+                            );
+                            $query = new WP_Query($args);
+                            if ($query->have_posts()) :
+                                while ($query->have_posts()) : $query->the_post();
+                                    $category = get_the_category();
+                                    $category_name = $category[0]->cat_name;
+                                    $post_tags = get_the_tags();
+                                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                            ?>
+                                    <div class="swiper-slide">
+                                        <a href="<?php the_permalink(); ?>" class="article card">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <?php the_post_thumbnail(); ?>
+                                            <?php endif; ?>
+                                            <?php
+                                            if ($post_tags) {
+                                                foreach ($post_tags as $tag) {
+                                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="text-sub link">' . esc_html($tag->name) . '</a>';
+                                                }
+                                            } else {
+                                                // Если меток нет, выводим категорию записи
+                                                $category = get_the_category();
+                                                if (!empty($category)) {
+                                                    echo '<a href="' . esc_url(get_category_link($category[0]->term_id)) . '" class="text-sub link">' . esc_html($category[0]->name) . '</a>';
+                                                }
+                                            }
+                                            ?>
+                                            <a href="<?php the_permalink(); ?>" class="text link"><?php echo get_the_title(); ?></a>
+                                            <span class="text-date"><?php echo get_the_date('d.m.Y'); ?></span>
+                                        </a>
+                                    </div>
+                            <?php
+                                endwhile;
+                                wp_reset_postdata();
+                            else :
+                                echo '<p>Записей нет</p>';
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -244,39 +240,35 @@ get_header();
                             <div class="control-element next"></div>
                         </div>
                     </div>
-                    <a href="/" class="link-accent">еще видео</a>
+                    <a href="/category/media/videos/" class="link-accent">еще видео</a>
                 </div>
                 <div class="cards">
                     <div class="swiper videos">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="video card">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u_pnia4Xhlw?si=7pl_-LXbafGw_Gga" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <p class="text">Ход строительства жилого комплекса CHKALOV от застройщика интергрупп</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="video card">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u_pnia4Xhlw?si=7pl_-LXbafGw_Gga" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <p class="text">Ход строительства жилого комплекса CHKALOV от застройщика интергрупп</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="video card">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u_pnia4Xhlw?si=7pl_-LXbafGw_Gga" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <p class="text">Ход строительства жилого комплекса CHKALOV от застройщика интергрупп</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="video card">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u_pnia4Xhlw?si=7pl_-LXbafGw_Gga" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <p class="text">Ход строительства жилого комплекса CHKALOV от застройщика интергрупп</p>
-                                    <span class="text-date">22.01.2022</span>
-                                </div>
-                            </div>
+                            <?php
+                            $args = array(
+                                'category_name' => 'videos', // Category slug
+                            );
+                            $query = new WP_Query($args);
+                            if ($query->have_posts()) :
+                                while ($query->have_posts()) : $query->the_post();
+                            ?>
+                                    <div class="swiper-slide">
+                                        <div class="video card">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <?php the_post_thumbnail(); ?>
+                                            <?php endif; ?>
+                                            <p class="text">Ход строительства жилого комплекса CHKALOV от застройщика интергрупп</p>
+                                            <span class="text-date"><?php echo get_the_date('d.m.Y'); ?></span>
+                                        </div>
+                                    </div>
+                            <?php
+                                endwhile;
+                                wp_reset_postdata();
+                            else :
+                                echo '<p>Записей нет</p>';
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>

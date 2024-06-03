@@ -16,7 +16,8 @@
     .section.product-page,
     .section.similar,
     .section.single,
-    .single-content {
+    .single-content,
+    .section.contacts {
         padding-left: 30px !important;
         padding-right: 30px !important;
     }
@@ -117,6 +118,20 @@
 }
 
 @media screen and (max-width: 992px) {
+    .section.contacts .content {
+        flex-direction: column;
+
+        iframe {
+            width: 100% !important;
+        }
+    }
+
+    .section.contacts .contacts-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .offers {
         .cards {
             .card.product {
@@ -271,6 +286,14 @@
 }
 
 @media screen and (max-width: 768px) {
+    .section.contacts .contacts-info {
+        flex-direction: column;
+    }
+
+    .section.contacts .content iframe {
+        height: 50vh !important;
+    }
+
     .gallery {
         padding: 20px;
     }
@@ -429,6 +452,14 @@
 @media screen and (max-width: 320px) {
     html {
         font-size: 12px;
+    }
+
+    .banner-ad__text-block .btn {
+        padding: 15px 30px !important;
+    }
+
+    .buttons {
+        flex-direction: column;
     }
 
 }

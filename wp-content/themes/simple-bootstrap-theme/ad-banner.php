@@ -18,7 +18,7 @@ if ($ad_banner_view) :
                                 <p><?php echo esc_html(get_theme_mod('advertisement_banner_description')); ?></p>
                                 <div class="buttons">
                                     <a href="tel:<?= get_theme_mod('phone', ''); ?>" class="btn">Заказать звонок</a>
-                                    <a href="#contact-form" class="btn btn-transparent">Оставить заявку</button>
+                                    <a href="#contact-form" class="btn btn-transparent">Оставить заявку</a>
                                 </div>
                             </div>
                             <div class="right-side">

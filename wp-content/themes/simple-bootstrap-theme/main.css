@@ -432,6 +432,9 @@ html {
     .cards .action-block img {
       max-width: none; }
 
+a.article.card > img {
+  max-height: 165px !important; }
+
 .banner-ad .content {
   display: flex;
   flex-direction: column;
@@ -1083,7 +1086,8 @@ section.section.product-page {
     align-items: start; }
   .section.contacts .content {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    gap: 20px; }
 
 .irs--sharp .irs-bar {
   top: 30px;
@@ -1255,7 +1259,8 @@ span.irs-from {
   .section.product-page,
   .section.similar,
   .section.single,
-  .single-content {
+  .single-content,
+  .section.contacts {
     padding-left: 30px !important;
     padding-right: 30px !important; }
   .header .content {
@@ -1312,6 +1317,14 @@ span.irs-from {
     gap: 3rem; } }
 
 @media screen and (max-width: 992px) {
+  .section.contacts .content {
+    flex-direction: column; }
+    .section.contacts .content iframe {
+      width: 100% !important; }
+  .section.contacts .contacts-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
   .offers .cards .card.product {
     width: calc(50% - 20px); }
     .offers .cards .card.product .swiper-img {
@@ -1407,6 +1420,10 @@ span.irs-from {
     justify-content: flex-end; } }
 
 @media screen and (max-width: 768px) {
+  .section.contacts .contacts-info {
+    flex-direction: column; }
+  .section.contacts .content iframe {
+    height: 50vh !important; }
   .gallery {
     padding: 20px; }
   .swiper_thumbnail .swiper-wrapper {
@@ -1491,7 +1508,11 @@ span.irs-from {
 
 @media screen and (max-width: 320px) {
   html {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .banner-ad__text-block .btn {
+    padding: 15px 30px !important; }
+  .buttons {
+    flex-direction: column; } }
 
 .section.category {
   padding: 55px 30px; }
